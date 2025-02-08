@@ -1,9 +1,9 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'My Personal Library',
+  title: 'My Personal tech blog',
   author: 'Marcio Moreira Junior',
-  headerTitle: 'OSLabs Library',
-  description: 'My personal library',
+  headerTitle: 'MMJ Tech Library',
+  description: 'My personal tech blog',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
@@ -15,11 +15,11 @@ const siteMetadata = {
   github: 'https://github.com/mdmjunior',
   // x: 'https://twitter.com/x',
   // twitter: 'https://twitter.com/Twitter',
-  //facebook: 'https://facebook.com',
+  facebook: 'https://facebook.com/mdmjunior',
   //youtube: 'https://youtube.com',
   linkedin: 'https://www.linkedin.com/in/mdmjunior',
   //threads: 'https://www.threads.net',
-  instagram: 'https://www.instagram.com/mdmjunior',
+  instagram: 'https://www.instagram.com/marciomjunior',
   //medium: 'https://medium.com',
   //bluesky: 'https://bsky.app/',
   locale: 'en-US',

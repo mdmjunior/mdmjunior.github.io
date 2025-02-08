@@ -7,18 +7,15 @@ interface Project {
 
 const projectsData: Project[] = [
   {
-    title: 'A Search Engine',
-    description: `What if you could look up any information in the world? Webpages, images, videos
-    and more. Google has many features to help you find exactly what you're looking
-    for.`,
-    imgSrc: '/static/images/google.png',
-    href: 'https://www.google.com',
+    title: 'AutoM8 - Post Install Linux Tool',
+    description: `AutoM8 is a tool developed in bash script to automate the post install process of my workstation. In a few days
+    I'll describe more about it`,
+    imgSrc: '/static/images/AutoM8.png',
+    href: 'https://www.github.com/mdmjunior/autom8/',
   },
   {
-    title: 'The Time Machine',
-    description: `Imagine being able to travel back in time or to the future. Simple turn the knob
-    to the desired date and press "Go". No more worrying about lost keys or
-    forgotten headphones with this simple yet affordable solution.`,
+    title: 'NONE',
+    description: `NONE YET`,
     imgSrc: '/static/images/time-machine.jpg',
     href: '/blog/the-time-machine',
   },
