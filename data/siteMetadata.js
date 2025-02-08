@@ -4,7 +4,7 @@ const siteMetadata = {
   author: 'Marcio Moreira Junior',
   headerTitle: 'OSLabs Tech Library',
   description: 'My personal tech blog',
-  language: 'pt_BR',
+  language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://mdmjunior.github.io',
   siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
@@ -22,7 +22,7 @@ const siteMetadata = {
   instagram: 'https://www.instagram.com/marciomjunior',
   medium: 'https://medium.com/mdmjunior',
   //bluesky: 'https://bsky.app/',
-  locale: 'pt_BR',
+  locale: 'en-US',
   // set to true if you want a navbar fixed to the top
   stickyNav: true,
   analytics: {
