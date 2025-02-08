@@ -4,7 +4,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
 
-const MAX_DISPLAY = 5
+const MAX_DISPLAY = 15
 
 export default function Home({ posts }) {
   return (
@@ -27,7 +27,7 @@ export default function Home({ posts }) {
                 <article>
                   <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
                     <dl>
-                      <dt className="sr-only">Published on</dt>
+                      <dt className="sr-only">Publicado em</dt>
                       <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                         <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
                       </dd>
@@ -57,9 +57,9 @@ export default function Home({ posts }) {
                         <Link
                           href={`/blog/${slug}`}
                           className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                          aria-label={`Read more: "${title}"`}
+                          aria-label={`Leia Mais: "${title}"`}
                         >
-                          Read more &rarr;
+                          Leia Mais &rarr;
                         </Link>
                       </div>
                     </div>
@@ -77,7 +77,7 @@ export default function Home({ posts }) {
             className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
             aria-label="All posts"
           >
-            All Posts &rarr;
+            Todos os posts &rarr;
           </Link>
         </div>
       )}

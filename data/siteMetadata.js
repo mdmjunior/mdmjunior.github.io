@@ -1,10 +1,10 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'My Personal tech blog',
+  title: 'OSLabs',
   author: 'Marcio Moreira Junior',
-  headerTitle: 'MMJ Tech Library',
+  headerTitle: 'OSLabs Tech Library',
   description: 'My personal tech blog',
-  language: 'en-us',
+  language: 'pt_BR',
   theme: 'system', // system, dark or light
   siteUrl: 'https://mdmjunior.github.io',
   siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
@@ -22,7 +22,7 @@ const siteMetadata = {
   instagram: 'https://www.instagram.com/marciomjunior',
   medium: 'https://medium.com/mdmjunior',
   //bluesky: 'https://bsky.app/',
-  locale: 'en-US',
+  locale: 'pt_BR',
   // set to true if you want a navbar fixed to the top
   stickyNav: true,
   analytics: {
