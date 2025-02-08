@@ -3,7 +3,7 @@ import { allBlogs } from 'contentlayer/generated'
 import { genPageMetadata } from 'app/seo'
 import ListLayout from '@/layouts/ListLayoutWithTags'
 
-const POSTS_PER_PAGE = 5
+const POSTS_PER_PAGE = 15
 
 export const metadata = genPageMetadata({ title: 'Blog' })
 
@@ -22,7 +22,7 @@ export default async function BlogPage(props: { searchParams: Promise<{ page: st
       posts={posts}
       initialDisplayPosts={initialDisplayPosts}
       pagination={pagination}
-      title="All Posts"
+      title="Todos os Posts"
     />
   )
 }
