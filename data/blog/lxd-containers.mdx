@@ -6,8 +6,6 @@ author: "Marcio Moreira Junior"
 tags: ["LXD", "LinuxContainers", "Containerização", "DevOps", "Docker", "Kubernetes", "Virtualização", "CloudComputing", "Canonical", "ServerAdmin", "Automação", "Linux"]
 ---
 
-import CodeBlock from '@components/CodeBlock';
-
 # LXD: A Tecnologia de Containers para Ambientes de Produção
 
 O **LXD** ("Lex-Dee") é uma tecnologia de containerização desenvolvida pela Canonical, baseada no **LXC (Linux Containers)**, mas oferecendo uma abordagem mais amigável e poderosa para gerenciar containers como se fossem máquinas virtuais leves. Diferente do **Docker**, que foca em containers de aplicação, o LXD se comporta como um hipervisor para sistemas operacionais, permitindo rodar containers completos de **Linux** com init system, suporte a SSH, e acesso direto ao hardware da máquina host.
@@ -18,12 +16,12 @@ O **LXD** ("Lex-Dee") é uma tecnologia de containerização desenvolvida pela C
 
 O **LXD** se baseia no **LXC**, que por sua vez usa namespaces e cgroups do kernel do Linux para isolar processos e gerenciar recursos. No entanto, o **LXD** adiciona uma camada de gestão mais intuitiva, oferecendo:
 
-- ✅ **Uma API REST completa**
-- ✅ **Um cliente de linha de comando (CLI) intuitivo**
-- ✅ **Suporte a imagens de vários sistemas operacionais**
-- ✅ **Snapshots e migração de containers**
-- ✅ **Suporte a armazenamento via ZFS, Btrfs, LVM e mais**
-- ✅ **Redes virtualizadas, incluindo suporte nativo a bridges e VLANs**
+-  **Uma API REST completa**
+-  **Um cliente de linha de comando (CLI) intuitivo**
+-  **Suporte a imagens de vários sistemas operacionais**
+-  **Snapshots e migração de containers**
+-  **Suporte a armazenamento via ZFS, Btrfs, LVM e mais**
+-  **Redes virtualizadas, incluindo suporte nativo a bridges e VLANs**
 
 Com esses recursos, é possível criar containers em segundos, configurar limites de CPU/memória e fazer migrações ao vivo entre hosts.
 
