@@ -1,8 +1,8 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Marcio Moreira Jr.',
+  title: 'Tech Bunker',
   author: 'Marcio Moreira Junior',
-  headerTitle: 'Personal Blog',
+  headerTitle: 'My Tech Bunker',
   description: 'A collection of tech documents',
   language: 'en-us',
   theme: 'system', // system, dark or light
@@ -15,11 +15,11 @@ const siteMetadata = {
   github: 'https://github.com/mdmjunior',
   //x: 'https://twitter.com/x',
   // twitter: 'https://twitter.com/Twitter',
-  //facebook: 'https://facebook.com',
+  facebook: 'https://facebook.com/mdmjunior',
   //youtube: 'https://youtube.com',
   linkedin: 'https://www.linkedin.com/in/mdmjunior',
   //threads: 'https://www.threads.net',
-  //instagram: 'https://www.instagram.com',
+  instagram: 'https://www.instagram.com/marciomjunior',
   //medium: 'https://medium.com',
   //bluesky: 'https://bsky.app/',
   locale: 'en-US',
