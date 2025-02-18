@@ -111,7 +111,7 @@ overlay          19G   11G  9.0G  54% /var/lib/docker.bak/overlay2         19G  
 
 ### Steps to Fix the Issue
 
-** 1 - Stop the Docker Service (Again):**
+**1 - Stop the Docker Service (Again):**
 
 Before unmounting the file systems, stop Docker to ensure it does not keep active mounts.
 
@@ -120,7 +120,7 @@ sudo systemctl stop docker
 sudo systemctl stop docker.socket
 ```
 
-** 2 - Unmount the Overlay File Systems:**
+**2 - Unmount the Overlay File Systems:**
 
 Use the umount command to manually unmount each overlay file system. For example:
 
@@ -130,15 +130,15 @@ sudo umount /var/lib/docker.bak/overlay2/a1a1281a34cd33b01f940d94012f66caab59964
 sudo umount /var/lib/docker.bak/overlay2/67cbc6754500503cbc507f645f59a66e288a580377d281d45f38df81a7146e68/merged
 ```
 
-** 3 - Check if All File Systems Have Been Unmounted:**
+**3 - Check if All File Systems Have Been Unmounted:**
 
 Use the df -h or mount command to check if there are no more overlay mounts in the /var/lib/docker.bak directory.
 
-** 4 - Confirm the Data Move:**
+**4 - Confirm the Data Move:**
 
 Now that the file systems have been unmounted, you can proceed to move the data to the new location without risk of errors.
 
-** 5 - Delete the Original Backup (Optional):**
+**5 - Delete the Original Backup (Optional):**
 
 If you are confident that the new setup is working, you can remove the backup folder:
 
@@ -146,7 +146,7 @@ If you are confident that the new setup is working, you can remove the backup fo
 sudo rm -rf /var/lib/docker.bak
 ```
 
-** 6 - Restart Docker:**
+**6 - Restart Docker:**
 
 Start Docker again to check if it is working correctly with the new directory:
 
