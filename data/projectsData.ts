@@ -9,8 +9,8 @@ const projectsData: Project[] = [
   {
     title: 'AutoM8',
     description: `Under Development`,
-    imgSrc: '/static/images/google.png',
-    href: 'https://www.google.com',
+    imgSrc: '/static/images/AutoM8.jpg',
+    href: 'https://www.github.com/mdmjunior/AutoM8/',
   },
   {
     title: 'Shell',
