@@ -4,9 +4,12 @@ date: '2025-02-17'
 tags: ['Containers', 'Docker', 'SysAdmin', 'DevOps', 'Linux']
 draft: false
 summary: 'How to move Docker volume to an extra disk on Linux.'
+authors: ['default']
 ---
 
 # Optimizing Docker Storage: How to Move Docker Data to an External Disk
+
+![Docker](/static/images/docker.png)
 
 As your Docker workloads grow, storage management becomes a crucial factor in maintaining system performance and reliability. By default, Docker stores 
 its data on the system disk, which can lead to space limitations, performance bottlenecks, and potential system crashes. In this guide, we'll walk you 
@@ -20,10 +23,10 @@ By default, Docker stores its data in /var/lib/docker, which is usually located 
 storage requirements can increase significantly, leading to potential performance issues, limited space, and even system crashes if the main disk becomes
 full. Moving Docker's storage to an external or dedicated disk offers several benefits:
 
-- Improved Performance: Separating Docker's data from the main system disk can reduce I/O bottlenecks, especially in high-traffic environments.
-- Increased Storage Capacity: A dedicated disk allows for more space, preventing Docker from consuming the root partition.
-- Better Reliability and Scalability: Using an external or dedicated disk makes it easier to scale storage without affecting the system's core operations.
-- Easier Backup and Recovery: Storing Docker data separately simplifies backup and disaster recovery processes.
+- **Improved Performance:** Separating Docker's data from the main system disk can reduce I/O bottlenecks, especially in high-traffic environments.
+- **Increased Storage Capacity:** A dedicated disk allows for more space, preventing Docker from consuming the root partition.
+- **Better Reliability and Scalability:** Using an external or dedicated disk makes it easier to scale storage without affecting the system's core operations.
+- **Easier Backup and Recovery:** Storing Docker data separately simplifies backup and disaster recovery processes.
 
 For these reasons, moving Docker's storage to an external disk is a recommended best practice for maintaining a stable and efficient containerized environment.
 
