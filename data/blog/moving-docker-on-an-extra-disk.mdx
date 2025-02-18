@@ -111,7 +111,7 @@ overlay          19G   11G  9.0G  54% /var/lib/docker.bak/overlay2         19G  
 
 ### Steps to Fix the Issue
 
-** 1 - Stop the Docker Service (Again): **
+** 1 - Stop the Docker Service (Again):**
 
 Before unmounting the file systems, stop Docker to ensure it does not keep active mounts.
 
@@ -138,7 +138,7 @@ Use the df -h or mount command to check if there are no more overlay mounts in t
 
 Now that the file systems have been unmounted, you can proceed to move the data to the new location without risk of errors.
 
-** 5 - Delete the Original Backup (Optional):** 
+** 5 - Delete the Original Backup (Optional):**
 
 If you are confident that the new setup is working, you can remove the backup folder:
 
