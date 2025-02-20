@@ -1,9 +1,9 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Tech Bunker',
+  title: `Marcio's Tech Bunker - stories, how-tos, tech guides and a lot more.`,
   author: 'Marcio Moreira Junior',
-  headerTitle: 'My Tech Bunker',
-  description: 'A collection of tech documents',
+  headerTitle: `Marcio's Tech Bunker`,
+  description: 'A personal blog where I write about tech, programming, and other stuff.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://mdmjunior.github.io',
@@ -24,7 +24,7 @@ const siteMetadata = {
   //bluesky: 'https://bsky.app/',
   locale: 'en-US',
   // set to true if you want a navbar fixed to the top
-  stickyNav: false,
+  stickyNav: true,
   analytics: {
     // If you want to use an analytics provider you have to add it to the
     // content security policy in the `next.config.js` file.
