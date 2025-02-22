@@ -1,5 +1,5 @@
 ---
-title: "LXC Commands Cheat Sheet: A Comprehensive Guide"
+title: "LXC Commands CheatSheet"
 date: "2025-02-22"
 summary: "Learn the essential LXC commands for managing Linux containers"
 tags: ['LXD', 'Linux', 'Containers', 'Ubuntu', 'DevOps', 'SysAdmin']
