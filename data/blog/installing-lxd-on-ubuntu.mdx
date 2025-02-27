@@ -14,18 +14,26 @@ authors: ['default']
 If you're looking to set up LXD on Ubuntu 24.04, you've come to the right place. In this guide, we'll walk you through the process of 
 installing LXD using Snap, assuming you already have Ubuntu installed, a wired network connection, and ZFS set up. Let's get started!
 
+---
+
 ## Why Use Snap to Install LXD?
 
 Snap packages are secure, easy to update, and maintain. Canonical, the creator of Ubuntu, recommends using Snap for LXD because it 
 ensures you always get the latest features and security patches.
 
+---
+
 ## Prerequisites
 
 Before you begin, ensure you have:
 
-- Ubuntu 24.04 installed
-- Wired network connection (recommended for server setups)
-- ZFS installed and configured as your storage backend
+- **Ubuntu 24.04 installed**
+- **Wired network connection (recommended for server setups)**
+- **ZFS installed and configured as your storage backend**
+
+---
+
+# Installation Steps
 
 ## Step 1: Update your system
 
@@ -53,7 +61,6 @@ If Snapd is not running, start it with:
 ```bash
 sudo systemctl start snapd
 ```
-
 ## Step 3: Install LXD Using Snap
 
 To install the latest version of LXD, use the following command:
@@ -88,14 +95,77 @@ This command will guide you through the LXD initialization process, allowing you
 
 During the interactive setup, you'll be prompted with several questions. Here are the recommended settings for using ZFS:
 
+\`\`\`bash
+sudo lxd init
+Would you like to use LXD clustering? (yes/no) [default=no]: **no**
+Do you want to configure a new storage pool? (yes/no) [default=yes]: **yes**
+Name of the new storage pool [default=default]: lxdpool **you can choose any name**
+Name of the storage backend to use (btrfs, ceph, dir, lvm, powerflex, zfs) [default=zfs]: **zfs**
+Create a new ZFS pool? (yes/no) [default=yes]: **yes**
+Would you like to use an existing empty block device (e.g. a disk or partition)? (yes/no) [default=no]: **no**
+Size in GiB of the new loop device (1GiB minimum) [default=5GiB]: **10GiB (I chose 10GiB)**
+Would you like to connect to a MAAS server? (yes/no) [default=no]: **no**
+Would you like to create a new local network bridge? (yes/no) [default=yes]:  **yes**
+What should the new bridge be called? [default=lxdbr0]: **lxdbr0**
+What IPv4 address should be used? (CIDR subnet notation, “auto” or “none”) [default=auto]: **auto**
+What IPv6 address should be used? (CIDR subnet notation, “auto” or “none”) [default=auto]: **auto**
+Would you like the LXD server to be available over the network? (yes/no) [default=no]: **no**
+Would you like stale cached images to be updated automatically? (yes/no) [default=yes]: **yes**
+Would you like a YAML "lxd init" preseed to be printed? (yes/no) [default=no]: **no**
+\`\`\`
 
+Run the zfs command to verify that the storage pool has been created:
 
+```bash
+sudo zfs list
+NAME                               USED  AVAIL  REFER  MOUNTPOINT
+lxdpool                            621K  9.20G    24K  legacy
+lxdpool/buckets                     24K  9.20G    24K  legacy
+lxdpool/containers                  24K  9.20G    24K  legacy
+lxdpool/custom                      24K  9.20G    24K  legacy
+lxdpool/deleted                    144K  9.20G    24K  legacy
+lxdpool/deleted/buckets             24K  9.20G    24K  legacy
+lxdpool/deleted/containers          24K  9.20G    24K  legacy
+lxdpool/deleted/custom              24K  9.20G    24K  legacy
+lxdpool/deleted/images              24K  9.20G    24K  legacy
+lxdpool/deleted/virtual-machines    24K  9.20G    24K  legacy
+lxdpool/images                      24K  9.20G    24K  legacy
+lxdpool/virtual-machines            24K  9.20G    24K  legacy
+```
+
+## Step 6: Verify LXD Installation
+
+Check the status of LXD:
+
+```bash
+lxd --version
+```
+This command will display the installed version of LXD.
+
+Next, verify the setup by launching your first container:
+
+```bash
+lxc launch ubuntu:noble mycontainer
+```
+This command will create and start a new container named `mycontainer` using the Ubuntu 24.04 image.
+
+Check the status of the running container:
+
+```bash
+lxc list
++------------------+---------+----------------------+-----------------------------------------------+-----------+-----------+
+|       NAME       |  STATE  |         IPV4         |                     IPV6                      |   TYPE    | SNAPSHOTS |
++------------------+---------+----------------------+-----------------------------------------------+-----------+-----------+
+| mycontainer      | RUNNING | 10.24.224.246 (eth0) | fd42:565a:a13a:21ec:216:3eff:fee8:84e7 (eth0) | CONTAINER | 0         |
++------------------+---------+----------------------+-----------------------------------------------+-----------+-----------+
+```
 ## Conclusion
 
-LXD stands out as a hybrid technology between containers and VMs, offering the best of both worlds: performance, flexibility, and isolation.
-While Docker dominates application containers, LXD is the ultimate choice for system containers.
+Congratulations! You've successfully installed LXD on Ubuntu 24.04 using Snap with ZFS as the storage backend. You're now ready to create and manage 
+system containers efficiently.  
 
-If you haven't tried LXD yet, it's time to explore its power! In the next posts, we'll cover installation, configuration, and advanced usage.
-Stay tuned!
+Stay tuned for more tutorials and tips on using LXD effectively. If you found this guide helpful, feel free to share it and check out our other posts!  
+
+Happy containerizing!
 
 
