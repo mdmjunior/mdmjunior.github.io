@@ -90,7 +90,7 @@ const ThemeSwitch = () => {
                         <div className="mr-2">
                           <Sun />
                         </div>
-                        Light
+                        Claro
                       </button>
                     )}
                   </MenuItem>
