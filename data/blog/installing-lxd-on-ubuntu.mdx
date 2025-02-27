@@ -94,7 +94,7 @@ This command will guide you through the LXD initialization process, allowing you
 
 During the interactive setup, you'll be prompted with several questions. Here are the recommended settings for using ZFS:
 
-\`\`\`bash
+```bash
 sudo lxd init
 Would you like to use LXD clustering? (yes/no) [default=no]: **no**
 Do you want to configure a new storage pool? (yes/no) [default=yes]: **yes**
@@ -111,7 +111,7 @@ What IPv6 address should be used? (CIDR subnet notation, “auto” or “none�
 Would you like the LXD server to be available over the network? (yes/no) [default=no]: **no**
 Would you like stale cached images to be updated automatically? (yes/no) [default=yes]: **yes**
 Would you like a YAML "lxd init" preseed to be printed? (yes/no) [default=no]: **no**
-\`\`\`
+```
 
 Run the zfs command to verify that the storage pool has been created:
 
