@@ -1,7 +1,7 @@
 import Image from './Image'
 import Link from './Link'
 
-const Card = ({ title, description, imgSrc, href, buildWith }) => (
+const Card = ({ title, description, imgSrc, href }) => (
   <div className="md max-w-[544px] p-4 md:w-1/2">
     <div
       className={`${
@@ -39,7 +39,6 @@ const Card = ({ title, description, imgSrc, href, buildWith }) => (
           )}
         </h2>
         <p className="prose mb-3 max-w-none text-gray-500 dark:text-gray-400">{description}</p>
-        <p className="prose mb-3 max-w-none text-gray-500 dark:text-gray-400">{buildWith}</p>
         {href && (
           <Link
             href={href}
