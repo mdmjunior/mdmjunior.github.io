@@ -20,7 +20,7 @@ const siteMetadata = {
   linkedin: 'https://www.linkedin.com/in/mdmjunior',
   //threads: 'https://www.threads.net',
   instagram: 'https://www.instagram.com/marciomjunior',
-  //medium: 'https://medium.com',
+  medium: 'https://medium.com/@mdmjunior',
   //bluesky: 'https://bsky.app/',
   locale: 'en-US',
   // set to true if you want a navbar fixed to the top

@@ -1,10 +1,10 @@
 {
-  "lxd": 1,
-  "linux": 2,
-  "containers": 2,
+  "lxd": 2,
+  "linux": 3,
+  "containers": 3,
   "virtualization": 1,
-  "devops": 2,
-  "sysadmin": 2,
-  "ubuntu": 1,
+  "devops": 3,
+  "sysadmin": 3,
+  "ubuntu": 2,
   "docker": 1
 }
