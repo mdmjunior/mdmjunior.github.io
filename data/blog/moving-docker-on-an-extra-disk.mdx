@@ -17,6 +17,7 @@ through the process of moving Docker's storage to an external or dedicated disk.
 capacity, and enhance scalability. Whether you're managing a production environment or optimizing your development setup, this step-by-step tutorial 
 will ensure a smooth transition.
 
+---
 
 ## Why Move Docker Data to an External Disk?
 By default, Docker stores its data in /var/lib/docker, which is usually located on the system's main disk. As containerized applications grow, Docker's 
@@ -30,6 +31,7 @@ full. Moving Docker's storage to an external or dedicated disk offers several be
 
 For these reasons, moving Docker's storage to an external disk is a recommended best practice for maintaining a stable and efficient containerized environment.
 
+---
 
 ## Step-by-Step Guide to Using an Extra Disk for Docker
 
@@ -78,6 +80,7 @@ Now, restart the Docker service.
 sudo systemctl start docker
 sudo systemctl start docker.socket
 ```
+---
 
 ### 7 - Verify Everything is Working:
 
@@ -86,6 +89,7 @@ Check if Docker is using the new directory correctly.
 ```bash
 docker info | grep "Docker Root Dir"
 ```
+---
 
 ### Cleanup (Optional)
 
@@ -94,6 +98,7 @@ After verifying that everything is working correctly, you can remove the old bac
 ```bash
 sudo rm -rf /var/lib/docker.bak
 ```
+---
 
 ## Troubleshooting
 
@@ -157,6 +162,7 @@ Start Docker again to check if it is working correctly with the new directory:
 sudo systemctl start docker
 sudo systemctl start docker.socket
 ```
+---
 
 ## Conclusion
 

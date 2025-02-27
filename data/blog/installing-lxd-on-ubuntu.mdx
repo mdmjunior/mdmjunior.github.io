@@ -1,9 +1,8 @@
 ---
 title: 'Installing LXD on Ubuntu 24.04'
 date: '2025-02-27'
-summary: 'Learn how to install LXD using Snap on Ubuntu.'
-tags: ['LXD','Linux','Containers','Virtualization','DevOps','SysAdmin','Ubuntu']
-images: ['/static/images/deploylxc.jpeg']
+summary: 'Follow this guide of how to install LXD using Snap on Ubuntu.'
+tags: ['LXD','Linux','Containers','Virtualization','DevOps','SysAdmin','Ubuntu', 'Snap', 'ZFS']
 authors: ['default']
 ---
 
@@ -33,9 +32,9 @@ Before you begin, ensure you have:
 
 ---
 
-# Installation Steps
+## Installation Steps
 
-## Step 1: Update your system
+### Step 1: Update your system
 
 Start by updating your package list and upgrading existing packages:
 
@@ -44,7 +43,7 @@ sudo apt update && sudo apt upgrade -y
 ```
 This ensures that all packages are up to date before installing LXD.
 
-## Step 2: Install Snapd
+### Step 2: Install Snapd
 
 Snapd should come pre-installed on Ubuntu 24.04. However, if it's not installed, run:
 
@@ -61,7 +60,7 @@ If Snapd is not running, start it with:
 ```bash
 sudo systemctl start snapd
 ```
-## Step 3: Install LXD Using Snap
+### Step 3: Install LXD Using Snap
 
 To install the latest version of LXD, use the following command:
 
@@ -70,7 +69,7 @@ sudo snap install lxd
 ```
 This will download and install the latest stable version of LXD from the Snap store.
 
-## Step 4: Add your user to the LXD group
+### Step 4: Add your user to the LXD group
 
 To manage LXD containers without using sudo, add your user to the lxd group:
 
@@ -84,7 +83,7 @@ newgrp lxd
 ```
 This command will add your user to the lxd group without logging out.
 
-## Step 5: Initialize LXD
+### Step 5: Initialize LXD
 
 After adding your user to the LXD group, initialize LXD with the following command:
 
@@ -133,7 +132,7 @@ lxdpool/images                      24K  9.20G    24K  legacy
 lxdpool/virtual-machines            24K  9.20G    24K  legacy
 ```
 
-## Step 6: Verify LXD Installation
+### Step 6: Verify LXD Installation
 
 Check the status of LXD:
 
@@ -156,16 +155,15 @@ lxc list
 +------------------+---------+----------------------+-----------------------------------------------+-----------+-----------+
 |       NAME       |  STATE  |         IPV4         |                     IPV6                      |   TYPE    | SNAPSHOTS |
 +------------------+---------+----------------------+-----------------------------------------------+-----------+-----------+
-| mycontainer      | RUNNING | 10.24.224.246 (eth0) | fd42:565a:a13a:21ec:216:3eff:fee8:84e7 (eth0) | CONTAINER | 0         |
+| mycontainer      | RUNNING | 10.25.124.146 (eth0) | fd42:565a:a13a:22ec:214:3eff:fee8:84e7 (eth0) | CONTAINER | 0         |
 +------------------+---------+----------------------+-----------------------------------------------+-----------+-----------+
 ```
+---
+
 ## Conclusion
 
-Congratulations! You've successfully installed LXD on Ubuntu 24.04 using Snap with ZFS as the storage backend. You're now ready to create and manage 
-system containers efficiently.  
-
-Stay tuned for more tutorials and tips on using LXD effectively. If you found this guide helpful, feel free to share it and check out our other posts!  
-
-Happy containerizing!
+Congratulations! You've successfully installed LXD on Ubuntu 24.04 using Snap with ZFS as the storage backend. You're now ready to 
+create and manage system containers efficiently. Stay tuned for more tutorials and tips on using LXD effectively. If you found 
+this guide helpful, feel free to share it and check out our other posts!
 
 
