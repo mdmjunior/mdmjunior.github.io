@@ -1,8 +1,8 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: `Marcio's Tech Bunker - stories, how-tos, tech guides and a lot more.`,
+  title: `Marcio's Tech Library - stories, how-tos, tech guides and a lot more.`,
   author: 'Marcio Moreira Junior',
-  headerTitle: `Marcio's Tech Bunker`,
+  headerTitle: `Marcio's Tech Library`,
   description: 'A personal blog where I write about tech, programming, and other stuff.',
   language: 'en-us',
   theme: 'system', // system, dark or light
@@ -13,7 +13,7 @@ const siteMetadata = {
   //mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'iam@marciomoreirajunior.com.br',
   github: 'https://github.com/mdmjunior',
-  //x: 'https://twitter.com/x',
+  x: 'https://x.com/oslabsmmoreira',
   // twitter: 'https://twitter.com/Twitter',
   facebook: 'https://facebook.com/mdmjunior',
   //youtube: 'https://youtube.com',
