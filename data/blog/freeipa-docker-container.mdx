@@ -1,0 +1,114 @@
+---
+title: 'How to deploy FreeIPA on Docker'
+date: '2025-03-12'
+summary: 'This post provides a comprehensive guide to deploying FreeIPA using Docker, covering installation, configuration, and troubleshooting for Linux administrators.'
+tags: ['FreeIPA', 'Docker', 'Linux', 'SysAdmin', 'CentOS', 'LDAP', 'Containers']
+draft: false
+authors: ['default']
+---
+
+<div align="justify">
+
+Deploying identity management solutions in containers is increasingly popular in modern infrastructures. But how do you effectively set up FreeIPA on Docker? FreeIPA provides centralized authentication, authorization, and account information, which is crucial for many Linux-based environments. In this post, I'll guide you through the steps to deploy FreeIPA in a Docker container on a CentOS system—perfect for those who value efficient, scalable, and manageable identity solutions.
+
+</div>
+---
+
+<div align="justify">
+
+## Prerequisites
+Before starting, ensure you have the following prerequisites:
+
+- A CentOS machine with Docker installed.
+- Basic understanding of Linux command-line.
+- Sudo privileges.
+
+To install Docker on CentOS, use these commands:
+
+```bash
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce docker-ce-cli containerd.io
+sudo systemctl start docker
+sudo systemctl enable docker
+```
+
+### Step 1: Pulling the FreeIPA Docker Image
+Next, you need to pull the FreeIPA Docker image from the official repository. Run:
+
+```bash
+sudo docker pull freeipa/freeipa-server
+```
+
+Check the download progress through this command:
+
+```bash
+docker images
+```
+
+Expected output:
+
+```
+REPOSITORY                TAG                 IMAGE ID            CREATED             SIZE
+freeipa/freeipa-server    latest              abcdef123456        2 weeks ago        524MB
+```
+
+### Step 2: Running the FreeIPA Container
+To run the FreeIPA server, use the following command, replacing `<your_domain>` with your actual domain (like `example.com`):
+
+```bash
+sudo docker run -d --name freeipa-server \ 
+  -e PASSWORD='YourStrongPassword' \ 
+  -h freeipa.<your_domain> \ 
+  -p 80:80 -p 443:443 -p 389:389 -p 636:636 \ 
+  freeipa/freeipa-server
+```
+
+You may expose additional ports as necessary depending on your use case. To verify the container is running, execute:
+
+```bash
+docker ps
+```
+
+Expected output:
+
+```
+CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                                             NAMES
+12345abcd           freeipa/freeipa-server    "run --server --..."   About a minute ago   Up About a minute   0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp, ...   freeipa-server
+```
+
+### Step 3: Configuring FreeIPA
+To configure FreeIPA, you can access the web interface via your browser by navigating to `https://<your_server_ip>`. Follow the setup wizard to complete configuration. You will need to enter your domain, a Kerberos realm, and admin credentials. Here’s a command to check logs during setup:
+
+```bash
+sudo docker logs freeipa-server
+```
+
+### Step 4: Verifying the Installation
+After the configuration is completed, verify that FreeIPA is running correctly:
+
+Use the FreeIPA client to check server status:
+
+```bash
+sudo ipa-healthcheck
+```
+
+Expected output:
+
+```
+FreeIPA server is healthy.
+```
+
+### Troubleshooting Common Issues
+- **If the container does not start**, ensure that all necessary ports are free and not being used by other services.
+- **For LDAP-related errors**, ensure firewall rules allow LDAP traffic.
+- Use `docker exec` to access the running container and check logs for debugging:
+
+```bash
+sudo docker exec -it freeipa-server /bin/bash
+```
+
+### Conclusion
+Deploying FreeIPA in a Docker container simplifies the management of user identities and access control across multiple systems. This setup allows you to leverage containerization benefits, such as easy scalability and management. With these straightforward steps and practical commands, you can have your FreeIPA server running securely and efficiently on Docker. Keep experimenting with the configurations to tailor it to your organizational needs!
+
+</div>
