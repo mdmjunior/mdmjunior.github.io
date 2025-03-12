@@ -1,0 +1,116 @@
+---
+title: 'LXC Command Cheat Sheet'
+date: '03-12-2025'
+summary: 'This cheat sheet provides essential commands and tips for managing LXC containers on Linux, focusing on Ubuntu and Canonical's offerings.'
+tags: [''LXC', 'Linux', 'Ubuntu', 'Containers', 'Canonical', 'Virtualization', 'Command Line'']
+authors: ['defaut']
+---
+
+<div align="justify">
+
+LXC (Linux Containers) allows easy management and deployment of lightweight, virtualized environments on Linux. As container technology becomes vital in modern application development, understanding LXC commands can significantly streamline your workflow. Are you ready to master LXC and enhance your Linux container management skills?
+
+</div>
+---
+
+<div align="justify">
+
+### Getting Started with LXC
+LXC simplifies the process of running multiple isolated Linux systems (containers) on a single host. To start using LXC, ensure that it's installed on your system:
+
+```bash
+sudo apt update
+sudo apt install lxc
+```
+
+After installation, verify LXC's version:
+
+```bash
+lxc --version
+```
+Expected output:
+```plaintext
+4.0.6
+```
+
+### Creating a New Container
+Creating a new container is straightforward. The primary command is `lxc-create`. Here’s how to create a container running Ubuntu:
+
+```bash
+sudo lxc-create -n my-container -t ubuntu
+```
+
+This command creates a new container named `my-container` using the Ubuntu template. Check the status of the newly created container with:
+
+```bash
+sudo lxc-ls -f
+```
+Expected output:
+```plaintext
+NAME           STATE    AUTOSTART  GROUP     IPV4              IPV6
+my-container   RUNNING  0          -         10.0.3.25        -
+```
+
+### Starting and Stopping Containers
+To start your new container, use:
+
+```bash
+sudo lxc-start -n my-container
+```
+
+You can access the shell of the container using:
+
+```bash
+sudo lxc-attach -n my-container
+```
+
+To stop a running container, simply use:
+
+```bash
+sudo lxc-stop -n my-container
+```
+
+### Managing Container Configuration
+Each container has a configuration file located in `/var/lib/lxc/my-container/config`. You can modify settings such as networking parameters or resource limits. For example, to set a memory limit for your container, add the following line to the configuration file:
+
+```plaintext
+lxc.cgroup.memory.limit_in_bytes = 512M
+```
+
+### Networking with LXC
+By default, LXC uses a bridge for network connectivity. You can see the current network settings of your container with:
+
+```bash
+sudo lxc-info -n my-container
+```
+
+To configure your container's network settings, consider editing the configuration file mentioned earlier. For example, to assign a static IP, you might add:
+
+```plaintext
+lxc.network.type = veth
+lxc.network.flags = up
+lxc.network.link = lxcbr0
+lxc.network.name = eth0
+lxc.network.ipv4 = 10.0.3.25/24
+```
+
+### Common Troubleshooting Tips
+If you encounter issues starting or managing containers, consider checking:
+1. **Container Logs**: 
+   Use `lxc-info` to get the console log.
+   ```bash
+   sudo lxc-info -n my-container -s
+   ```
+   This can provide insights into any errors.
+2. **Network Issues**: 
+   Ensure the `lxcbr0` bridge interface is up and configured correctly:
+   ```bash
+   ip addr show lxcbr0
+   ```
+3. **Permissions**: 
+   Run commands with `sudo` to avoid permissions-related errors.
+
+### Conclusion
+LXC is a powerful tool for managing lightweight, isolated environments in Linux, especially with Ubuntu. This cheat sheet covers the essential commands and configurations you need to get started quickly and effectively. Mastering these commands will not only enhance your container management skills but also improve your overall system administration capabilities. Dive into LXC and start creating your containers today!
+
+</div>
