@@ -1,0 +1,98 @@
+---
+title: 'How to install nginx on Ubuntu and configure it with SSL using LetsEncript on Ubuntu'
+date: '2025-03-12'
+summary: 'This post provides a step-by-step guide to installing Nginx on Ubuntu and securing it with SSL using LetsEncrypt.'
+tags: ['Nginx', 'Ubuntu', 'SSL', 'LetsEncrypt', 'SysAdmin', 'Linux', 'HTTP']
+draft: false
+authors: ['default']
+---
+
+<div align="justify">
+
+# Introduction
+Are you looking to set up a powerful web server on your Ubuntu machine? Nginx is a popular choice known for its performance and scalability. With the rise of security concerns and Google's push for HTTPS, configuring SSL is now more essential than ever. This guide will walk you through the installation of Nginx on Ubuntu and how to secure it with SSL using LetsEncrypt, ensuring your web application is both performant and secure.
+
+</div>
+---
+
+<div align="justify">
+
+# Step 1: Installing Nginx
+Installing Nginx on Ubuntu is straightforward and can typically be done in a few commands. First, you'll want to update your package index:
+
+```bash
+sudo apt update
+```
+
+Next, install Nginx:
+
+```bash
+sudo apt install nginx
+```
+
+After installation, you can start Nginx and enable it to run at boot:
+
+```bash
+sudo systemctl start nginx
+sudo systemctl enable nginx
+```
+
+You can verify Nginx is up and running by accessing your server's IP address via your web browser. You should see the default Nginx welcome page.
+
+# Step 2: Configuring Firewall
+Before proceeding to configure SSL, ensure that your firewall settings allow HTTP and HTTPS traffic. If you're using UFW (Uncomplicated Firewall), you can run:
+
+```bash
+sudo ufw allow 'Nginx Full'
+```
+
+This command allows both HTTP (port 80) and HTTPS (port 443) connections.
+
+# Step 3: Installing Certbot for SSL
+LetsEncrypt provides an easy way to obtain an SSL certificate, which is crucial for HTTPS. Install Certbot, the utility used to obtain and manage SSL certificates:
+
+```bash
+sudo apt install certbot python3-certbot-nginx
+```
+
+# Step 4: Obtaining SSL Certificate
+Now, you can request a SSL certificate by running:
+
+```bash
+sudo certbot --nginx -d your_domain.com -d www.your_domain.com
+```
+
+During this process, Certbot will ask for an email address to send you renewal reminders and for your agreement to the terms of service. It will also automatically configure your Nginx server to use SSL. You should see output like this:
+
+```plaintext
+Obtaining a new SSL certificate
+Deploying Certificate to VirtualHost /etc/nginx/sites-enabled/default
+```
+
+# Step 5: Testing SSL Configuration
+After obtaining an SSL certificate, it’s essential to verify its proper configuration. You can test your SSL settings using:
+
+```bash
+sudo nginx -t
+```
+
+If the test is successful, reload Nginx:
+
+```bash
+sudo systemctl reload nginx
+```
+
+You can now check your website using HTTPS in your browser. Tools like [SSL Labs](https://www.ssllabs.com/ssltest/) can help analyze your SSL setup.
+
+# Troubleshooting Common Issues
+1. **Firewall Issues**: If you cannot access your server over HTTPS, ensure UFW or any other firewall is allowing traffic through port 443.
+2. **Expired Certificate**: LetsEncrypt certificates are valid for 90 days. Certbot can automate renewals; make sure to run:
+   ```bash
+   sudo certbot renew
+   ```
+3. **NGINX Configuration Errors**: When troubleshooting configuration issues, always run `nginx -t` before reloading Nginx.
+
+# Conclusion
+Configuring Nginx with SSL using LetsEncrypt not only secures your web applications but also improves user trust and search engine ranking. With the steps outlined above, you can easily set up your server environment to be both functional and secure. Don't forget to monitor your SSL certificate's expiration and set up automated renewals with Certbot to maintain your HTTPS status.
+
+</div>
