@@ -1,0 +1,101 @@
+---
+title: 'How to create ssh keys on Linux'
+date: '03-12-2025'
+summary: 'This post provides a comprehensive guide on generating SSH keys on Linux, enhancing your secure communication and access management practices.'
+tags: ['SSH', 'Security', 'Linux', 'SysAdmin', 'Key Management', 'Network Security', 'OpenSSH']
+draft: 'true'
+authors: ['default']
+---
+
+<div align="justify">
+
+In today’s digital landscape, securing access to remote servers is paramount. Have you considered the advantages of using SSH keys for authentication over traditional passwords? SSH keys provide a more secure method for logging into servers, significantly reducing the risk of unauthorized access. In this post, we will explore how to create SSH keys on Linux, covering essential commands, best practices, and troubleshooting tips for system administrators.
+
+</div>
+---
+
+<div align="justify">
+
+# Understanding SSH Keys
+SSH (Secure Shell) keys are cryptographic keys used for authenticating users and devices over a secure connection. Unlike passwords, SSH keys are not subject to brute-force attacks, making them a preferred choice for many system administrators.
+
+## Generating SSH Keys
+To create an SSH key pair on your Linux system, you will primarily use the `ssh-keygen` command. This command generates both a public key and a private key.
+
+### Step 1: Running the ssh-keygen Command
+Open your terminal and run the following command:
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+*Explanation:*
+- `-t rsa`: Specifies the type of key to create, in this case, RSA.
+- `-b 4096`: Determines the number of bits in the key. A higher number means better security.
+- `-C "your_email@example.com"`: Adds a label to your key, typically your email address.
+
+### Step 2: Setting the Key Location
+You will be prompted to enter a file location to save your key. By default, the key is stored in `~/.ssh/id_rsa`. To accept the default location, just press Enter:
+```plaintext
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/username/.ssh/id_rsa): 
+```
+If you wish to name the key, type the desired location:
+```plaintext
+Enter file in which to save the key (/home/username/.ssh/id_rsa): /home/username/.ssh/my_custom_key
+```
+
+### Step 3: Adding a Passphrase
+For added security, you can also secure your private key with a passphrase. If prompted, type in your desired passphrase:
+```plaintext
+Enter passphrase (empty for no passphrase): 
+```
+You will need this passphrase whenever you use the key.
+
+### Step 4: Key Generation Completion
+Once you’ve entered a passphrase (or left it empty), the key generation process will complete:
+```plaintext
+Your identification has been saved in /home/username/.ssh/id_rsa.
+Your public key has been saved in /home/username/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:... your_email@example.com
+The key's randomart image is:
++---[RSA 4096]----+
+|....
++----[SHA256]-----+
+```
+
+## Adding SSH Keys to the SSH Agent
+The SSH agent is a program that holds your private keys in memory. It simplifies the use of SSH keys by managing your private keys for you. To load your keys into the SSH agent, follow these steps:
+
+### Step 1: Start the SSH Agent
+You can start the SSH agent with the following command:
+```bash
+eval "$(ssh-agent -s)"
+```
+This outputs the process ID for the SSH agent:
+```plaintext
+Agent pid 12345
+```
+
+### Step 2: Add Your SSH Key
+To add your SSH private key to the agent, use the following command:
+```bash
+ssh-add ~/.ssh/id_rsa
+```
+If you used a custom name for your key, substitute the path accordingly.
+
+## Troubleshooting Common Issues
+When dealing with SSH keys, you might encounter some issues. Here are common troubleshooting steps:
+
+- **Permission Issues:** Ensure your `~/.ssh` directory and the key files have the correct permissions:
+```bash
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/id_rsa
+chmod 644 ~/.ssh/id_rsa.pub
+```
+- **SSH Agent Not Recognizing Key:** If the SSH agent does not recognize your key, ensure it's added correctly. Re-add it using the `ssh-add` command.
+- **Connection Refused:** If you see a `Connection refused` error, ensure the SSH service is running on the server and that your firewall settings allow SSH connections.
+
+## Conclusion
+Creating and managing SSH keys on a Linux system is a critical skill for any system administrator focused on enhancing security. By utilizing SSH keys, you can significantly reduce the risk of unauthorized access while improving the efficiency of remote logins. Follow the outlined steps, ensure you practice secure key management, and tackle common issues effectively, and you’ll be well on your way to mastering SSH key management.
+
+</div>
