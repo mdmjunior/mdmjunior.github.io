@@ -1,0 +1,119 @@
+---
+title: 'How to deploy Docker on a server using Ansible'
+date: '2025-03-11'
+summary: 'This post provides a detailed guide to deploying Docker on a server using Ansible, focusing on automation and Infrastructure as Code (IaC).'
+tags: ['Docker', 'Ansible', 'Automation', 'Infrastructure as Code', 'Ubuntu', 'Linux', 'Deployment']
+draft: 'false'
+authors: ['default']
+---
+
+<div align="justify">
+
+Are you looking to streamline your deployment processes and embrace automation for managing Docker environments? With Docker becoming a staple in modern application deployment and Ansible providing powerful orchestration capabilities, integrating these tools can revolutionize your workflow. In this guide, we will delve into how to deploy Docker on a server using Ansible, ensuring a repeatable and efficient process suitable for both development and production environments.
+
+</div>
+---
+
+<div align="justify">
+
+## Understanding Docker and Ansible
+
+Docker is a platform that allows developers to automate the deployment of applications inside lightweight containers, making them portable across different environments. Ansible, on the other hand, is a configuration management tool that automates software provisioning, configuration management, and application deployment using simple YAML files in a declarative manner. This synergy enables Infrastructure as Code (IaC), which is pivotal for modern DevOps practices.
+
+## Prerequisites
+Before we dive into the steps, ensure the following prerequisites are met:
+1. An Ubuntu server (16.04 or later) with SSH access.
+2. Ansible installed (preferably version 2.9 or later).
+3. You have root or sudo privileges on the server.
+
+To install Ansible, run:
+```bash
+sudo apt update
+sudo apt install ansible -y
+```
+
+## Step 1: Preparing the Ansible Inventory
+Ansible needs to know which server it needs to manage. This is done using an inventory file. Create or edit your inventory file, usually located at `/etc/ansible/hosts`:  
+```ini
+[my_servers]
+192.168.1.100 ansible_ssh_user=your_username
+```
+Replace `192.168.1.100` with your server's IP address.
+
+## Step 2: Writing the Ansible Playbook
+Create a new playbook file in your working directory. Name it `deploy_docker.yml`:  
+```yaml
+---
+- hosts: my_servers
+  become: yes
+  tasks:
+    - name: Update apt repository and install prerequisites
+      apt:
+        update_cache: yes
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+        state: present
+
+    - name: Add Docker GPG key
+      apt_key:
+        url: "https://download.docker.com/linux/ubuntu/gpg"
+        state: present
+
+    - name: Add Docker repository
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+        state: present
+
+    - name: Install Docker
+      apt:
+        name: docker-ce
+        state: latest
+
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+```
+This playbook includes tasks to prepare the server, install Docker, and ensure the Docker service is running.
+
+## Step 3: Running the Ansible Playbook
+Execute the playbook using the following Ansible command:
+```bash
+ansible-playbook -i /etc/ansible/hosts deploy_docker.yml
+```
+### Expected Output:
+```
+PLAY [my_servers] *********************************************
+
+TASK [Update apt repository and install prerequisites] ********
+... ok
+
+TASK [Add Docker GPG key] ***************************************
+... ok
+
+TASK [Add Docker repository] *************************************
+... ok
+
+TASK [Install Docker] ********************************************
+... changed: [192.168.1.100]
+
+TASK [Start Docker service] ***************************************
+... ok
+
+PLAY RECAP ****************************************************
+192.168.1.100             : ok=5    changed=1    unreachable=0    failed=0    skipped=0   
+```
+Check for errors in the output to troubleshoot if necessary. Common issues include network connectivity or permissions problems.
+
+## Troubleshooting Common Issues
+- **Key error**: If you encounter issues regarding the GPG key, ensure that the URL in the `apt_key` module is correct and accessible from your server.
+- **Failed to start Docker**: Use `sudo systemctl status docker` to diagnose issues. The logs typically provide insight into the problem.
+
+## Conclusion
+By automating Docker installation with Ansible, you not only increase efficiency in your deployment process but also enhance repeatability and consistency, which are key aspects of modern application deployment strategies. Embrace IaC tools to simplify complex tasks and ensure your environments are always up to date. This method sets a strong foundation for future automation that can extend to deploying, managing, and scaling containerized applications.
+
+</div>
