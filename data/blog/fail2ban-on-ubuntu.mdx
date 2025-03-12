@@ -1,0 +1,123 @@
+---
+title: 'How to install and configure fail2ban to log ssh sessions on Linux Ubuntu'
+date: '2025-03-12'
+summary: 'This post provides a detailed guide on installing and configuring Fail2ban to secure and log SSH sessions on Ubuntu systems.'
+tags: ['Ubuntu', 'Fail2ban', 'SSH', 'Linux', 'Security', 'SysAdmin', 'Firewall']
+draft: false
+authors: ['default']
+---
+
+<div align="justify">
+
+Are you concerned about unauthorized access to your SSH server? Securing SSH access is critical in today's threat landscape. Fail2ban is a powerful tool that helps protect your system by monitoring log files and banning IPs that show malicious signs. This guide will walk you through installing and configuring Fail2ban on an Ubuntu system to enhance your SSH security and logging capabilities.
+
+</div>
+---
+
+<div align="justify">
+
+## Understanding Fail2ban
+Fail2ban is an intrusion prevention software framework that protects Linux servers from brute-force attacks. It scans log files for repetitive failed authentication attempts and blocks the offending IP addresses using firewall rules. With about 25 years of experience in IT, particularly in Linux and security, I can attest to its value in maintaining server integrity and security.
+
+## Prerequisites
+Before getting started, ensure you have an Ubuntu server installed and access to a terminal with superuser privileges. If you are operating on a remote machine, SSH access must be functional. Typically, you can connect to your server via:
+
+```bash
+ssh username@your_ip_address
+```
+
+## Installing Fail2ban
+Install Fail2ban using the APT package manager. Open your terminal and run the following commands:
+
+```bash
+sudo apt update
+sudo apt install fail2ban
+```
+
+Confirm that Fail2ban is installed by checking its version:
+
+```bash
+fail2ban-client --version
+```
+
+You should see output similar to:
+
+```
+Fail2Ban v0.11.2
+```
+
+## Configuring Fail2ban for SSH
+Fail2ban comes with default configuration files located in `/etc/fail2ban/`. We will make a customized configuration for SSH under `/etc/fail2ban/jail.local` to avoid overwriting default settings. Create and edit the `jail.local` file:
+
+```bash
+sudo nano /etc/fail2ban/jail.local
+```
+
+Add the following configuration:
+
+```ini
+[sshd]
+enabled = true
+port = ssh
+filter = sshd
+logpath = /var/log/auth.log
+maxretry = 5
+bantime = 600
+```
+- Set `enabled` to true to activate SSH protection.
+- `maxretry` defines the number of allowed login attempts before banning an IP.
+- `bantime` specifies how long (in seconds) the offending IP should remain banned.
+
+After saving the changes, restart Fail2ban to apply the new configuration:
+
+```bash
+sudo systemctl restart fail2ban
+```
+
+## Verifying Fail2ban Operation
+To check the status of Fail2ban and your SSH jail, use the command:
+
+```bash
+sudo fail2ban-client status sshd
+```
+You should see output indicating whether the jail is running and any bans that are currently in place:
+
+```
+Status for the jail: sshd
+|- Filter
+|  |- Currently banned: 1
+|  |- Total banned: 10
+|_ Actions
+   |- Currently banned: 1
+   |- Total banned: 10
+```
+
+## Logging SSH Logins
+Fail2ban not only protects your server but can also log access attempts. You can configure the logging in the Fail2ban configuration files. Locate the section in `/etc/fail2ban/fail2ban.conf` for logging options:
+
+```bash
+sudo nano /etc/fail2ban/fail2ban.conf
+```
+
+Ensure the logging settings are set as desired:
+
+```ini
+loglevel = INFO
+logtarget = /var/log/fail2ban.log
+```
+
+This configuration will log all activity by Fail2ban into the specified log file, helping you maintain visibility over access attempts.
+
+## Troubleshooting
+If you encounter issues with Fail2ban not starting or the SSH service not being protected, check the status of Fail2ban using:
+
+```bash
+sudo systemctl status fail2ban
+```
+
+This command will help you diagnose any errors that may have occurred during startup. Common issues include syntax errors in configuration files or insufficient permissions.
+
+## Conclusion
+Securing your SSH connections is crucial for any serious server administration. Fail2ban provides robust defense mechanisms against brute-force attacks and logs all authentication attempts for auditing and analysis. By following this guide, you should have a functioning installation of Fail2ban, enhancing your Ubuntu server's security posture. Always remember to keep your system and packages updated, as security threats evolve rapidly.
+
+</div>
