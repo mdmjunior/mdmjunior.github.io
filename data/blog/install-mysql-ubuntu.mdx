@@ -1,0 +1,115 @@
+---
+title: 'How to install MySQL Server on Ubuntu'
+date: '2025-03-12'
+summary: 'This post is a detailed guide on installing MySQL Server on an Ubuntu system for effective database management and utilization.'
+tags: ['MySQL', 'Database', 'Ubuntu', 'Linux', 'SysAdmin', 'Installation', 'Tutorial']
+draft: false
+authors: ['default']
+---
+
+<div align="justify">
+
+Are you looking to set up a powerful relational database management system on your Ubuntu server? MySQL, a well-known open-source database, seamlessly integrates with numerous applications and is favored by developers worldwide. In this comprehensive guide, we’ll elaborate on the installation process for MySQL Server on Ubuntu, helping you go from installation to securing your database environment effectively. Let’s dive in!
+
+</div>
+---
+
+<div align="justify">
+
+# Prerequisites
+Before we begin installing MySQL, ensure your Ubuntu system is up-to-date and has `sudo` privileges. You can check for updates using:
+
+```bash
+sudo apt update
+sudo apt upgrade
+```
+
+## Step 1: Install MySQL Server
+MySQL Server can be easily installed using the package manager provided by Ubuntu. The following command will install MySQL:
+
+```bash
+sudo apt install mysql-server
+```
+
+You will be prompted to confirm the installation and see progress bars as it downloads and installs required packages. After completion, you can verify if MySQL is installed successfully using:
+
+```bash
+mysql --version
+```
+
+Expected Output:
+```
+mysql  Ver 8.0.32-0ubuntu0.20.04.2 for Linux on x86_64 (MySQL Community Server - GPL)
+```
+
+## Step 2: Secure MySQL Installation
+Once MySQL is installed, run the included security script to enhance the security of your MySQL installation. Execute:
+
+```bash
+sudo mysql_secure_installation
+```
+
+This script will help you:
+- Set a root password if it’s not set.
+- Remove anonymous users.
+- Disallow remote root login.
+- Remove test databases.
+- Reload privilege tables.
+
+When prompted, follow the instructions and respond accordingly to tighten your security.
+
+## Step 3: Start and Enable MySQL Service
+By default, MySQL should start automatically, but you should ensure that MySQL service is running and enabled to start on boot:
+
+To check the status:
+```bash
+sudo systemctl status mysql
+```
+
+Expected Output:
+```
+● mysql.service - MySQL Community Server
+   Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset: enabled)
+   Active: active (running) since Mon 2025-03-12 12:30:00 UTC; 5min ago
+```
+
+To start and enable MySQL service, use:
+```bash
+sudo systemctl start mysql
+sudo systemctl enable mysql
+```
+
+## Step 4: Connect to MySQL Server
+To start using MySQL, connect to the server with the following command:
+
+```bash
+sudo mysql -u root -p
+```
+
+You will be prompted to enter the root password set during the secure installation process. Successful login yields:
+```
+Welcome to the MySQL monitor.  Commands end with ; or \\g.
+Your MySQL connection id is 22
+Server version: 8.0.32-0ubuntu0.20.04.2 (MySQL Community Server - GPL)
+```
+
+## Step 5: Create a New Database and User
+Now that we are connected to MySQL, let’s create a new database and a user. Run the following queries in MySQL shell:
+
+```sql
+CREATE DATABASE my_database;
+CREATE USER 'my_user'@'localhost' IDENTIFIED BY 'my_password';
+GRANT ALL PRIVILEGES ON my_database.* TO 'my_user'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+These commands will create a database named `my_database`, a user `my_user`, and grant that user all privileges on the newly created database.
+
+## Troubleshooting Common Issues
+- **MySQL services won't start:** Check the logs located at `/var/log/mysql/error.log` for any reported errors by running `sudo tail -n 50 /var/log/mysql/error.log`.
+- **Access Denied Errors:** Ensure you are using the correct username and password. Additionally, check user privileges in the database by executing `SELECT host, user FROM mysql.user;`.
+
+## Conclusion
+Installing MySQL Server on Ubuntu is a straightforward yet crucial task for any system administrator or developer seeking to manage data effectively. By following the outlined steps, you can ensure a secure and robust database environment. Always remember to follow security best practices, keep your system updated, and back up your databases regularly. Happy coding!
+
+</div>
