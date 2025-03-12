@@ -1,0 +1,101 @@
+---
+title: 'How to deploy wordpress stack using Docker composer'
+date: '03-12-2025'
+summary: 'This post guides you through deploying a WordPress stack using Docker Compose, streamlining your development and production environments.'
+tags: [''Docker', 'WordPress', 'Containers', 'Linux', 'Docker Compose', 'DevOps', 'Web Development'']
+authors: ['default']
+---
+
+<div align="justify">
+
+## Introduction
+Are you looking to streamline your WordPress deployment process? With Docker and Docker Compose, you can effortlessly set up a WordPress stack that is portable, consistent, and scalable. Given the importance of containerization in modern DevOps, learning how to deploy a WordPress stack using these technologies is a valuable skill. Let's dive into the details!
+
+</div>
+---
+
+<div align="justify">
+
+### Understanding Docker and Docker Compose
+Docker is a platform that enables developers to automate the deployment of applications inside lightweight containers. Containers encapsulate an application and its dependencies, ensuring consistency across environments. 
+
+Docker Compose is a tool for defining and running multi-container Docker applications. It uses a simple YAML file to configure the application's services, making it easy to set up complex environments with multiple interdependent containers.
+
+### Setting Up Your Environment
+Before creating your WordPress stack, ensure that you have Docker and Docker Compose installed on your Linux machine. You can use the following commands to install them if they are not already installed:
+
+```bash
+# Update the package index
+echo "Updating package list..."
+sudo apt update
+
+# Install Docker
+sudo apt install docker.io -y
+
+# Start and enable Docker service
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Install Docker Compose
+sudo apt install docker-compose -y
+```
+
+### Creating the Docker Compose File
+Now that your environment is prepared, you'll need to create a `docker-compose.yml` file that specifies your WordPress and MySQL services. Create a directory for your project and add the following content:
+
+```yaml
+version: '3.7'
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user_password
+
+  wordpress:
+    image: wordpress:latest
+    restart: always
+    ports:
+      - '8000:80'
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: user
+      WORDPRESS_DB_PASSWORD: user_password
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - wordpress_data:/var/www/html
+
+volumes:
+  wordpress_data:
+```
+
+### Starting Your WordPress Stack
+With the `docker-compose.yml` file in place, navigate to your project directory in the terminal and run the following command to start your services:
+
+```bash
+docker-compose up -d
+```
+
+This command will launch the MySQL and WordPress containers in detached mode. You can check the logs of your deployed services using:
+
+```bash
+docker-compose logs
+```
+
+### Accessing Your WordPress Site
+After a few moments, your WordPress site will be accessible at `http://localhost:8000`. Open your web browser and visit this address to complete the WordPress installation. You will be prompted to choose a language, set the site title, and create an admin account.
+
+### Troubleshooting Common Issues
+Here are a few common issues you might encounter and how to resolve them:
+
+- **Database Connection Error**: Check your MySQL service configuration in `docker-compose.yml` to ensure the passwords and database names are correct.
+- **Port Conflicts**: If port 8000 is already in use, you can change it in the `docker-compose.yml` file (e.g., `- '8080:80'`).
+- **Container Not Starting**: Use `docker-compose ps` to check the status of your containers. If a service is not running, check its logs with `docker-compose logs <service_name>`. 
+
+### Conclusion
+Using Docker and Docker Compose to set up a WordPress stack simplifies the installation process and ensures consistency across different environments. This approach provides an efficient way to develop, test, and deploy your WordPress applications. With just a few commands and a simple configuration file, you can have a powerful and portable WordPress site running in no time!
+
+</div>
