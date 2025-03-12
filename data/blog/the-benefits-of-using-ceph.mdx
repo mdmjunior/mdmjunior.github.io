@@ -1,0 +1,89 @@
+---
+title: 'The Benefits of using Ceph on your homelab'
+date: '03-12-2025'
+summary: 'Explore how Ceph enhances your homelab experience, integrating with NFS, storage solutions, and Linux systems for optimal performance and reliability.'
+tags: ['Ceph', 'Homelab', 'NFS', 'Storage', 'Linux', 'Distributed Storage', 'Open Source']
+draft: 
+authors: ['default']
+---
+
+<div align="justify">
+
+Are you looking for a robust and scalable storage solution for your homelab? With the growing demand for high availability and fault tolerance in personal setups, implementing Ceph can transform your storage architecture. Ceph’s distributed nature not only provides efficiency and redundancy but also aligns effortlessly with NFS and Linux environments, making it a perfect candidate for any tech enthusiast's homelab.
+
+</div>
+---
+
+<div align="justify">
+
+# What is Ceph?
+Ceph is a unified, distributed storage system designed to provide excellent performance, reliability, and scalability. It abstracts data storage into a single system, offering block, file, and object storage. Whether you're using it for virtual machine images, containers, or simply as a file system, Ceph radiates versatility.
+
+## Seamless Integration with NFS
+One of the standout features of Ceph is its ability to integrate with the Network File System (NFS). Utilizing the Ceph File System (CephFS), you can mount your Ceph RADOS cluster via NFS and access files directly from your workstations or servers.
+
+### Configuration Steps
+To set up NFS with Ceph, follow these steps:
+1. **Install the required packages** on your Ceph Monitor node:
+   ```bash
+   sudo apt-get install nfs-kernel-server ceph-common ceph-fuse
+   ```
+2. **Edit the `/etc/exports`** file to add your CephFS mount point:
+   ```bash
+   /cephfs *(rw,sync,no_subtree_check)
+   ```
+3. **Restart NFS service**:
+   ```bash
+   sudo systemctl restart nfs-kernel-server
+   ```
+
+4. **Mount NFS** on your client:
+   ```bash
+   sudo mount -t nfs <your-ceph-monitor-ip>:/cephfs /mnt
+   ```
+
+### Expected Output
+After running the mount command, you can check if it's mounted correctly:
+```bash
+mount | grep cephfs
+```  
+This should show your NFS share if configured correctly.
+
+## High Availability and Scalability
+With Ceph, you can easily scale out your storage by adding more nodes, thus increasing both capacity and performance without downtime. Each node in the Ceph cluster operates independently while adding to the overall data pool, which means if one node fails, others will continue to serve data seamlessly, ensuring high availability.
+
+### Example of Adding Nodes
+To add a new OSD (Object Storage Daemon) node, execute:
+```bash
+ceph osd prepare <new-disk>
+ceph osd activate <new-disk>
+```  
+### Troubleshooting Node Addition
+If the Ceph cluster doesn't recognize the new OSD, check the logs:
+```bash
+ceph -s
+```  
+If there are issues, investigate the OSD log files located in `/var/log/ceph/`, which provide in-depth information about any errors.
+
+## Unified Storage Solution: Block, File, and Object Types
+Ceph allows you to use the same storage system for block, file, and object storage, simplifying management and enhancing performance. With tools like RBD (RADOS Block Device) for block storage and RGW (RADOS Gateway) for object storage, your homelab can accommodate various use cases as needed, from virtualized environments to cloud storage.
+
+### RBD Example
+To create a new RBD image:
+```bash
+rbd create my-image --size 10G
+```  
+To map it to a client:
+```bash
+rbd map my-image
+```  
+### Inquiring on Status
+To check the status of your RBD images:
+```bash
+rbd showmapped
+```  
+
+## Conclusion
+Deploying Ceph in your homelab can significantly enhance your storage solutions by providing scalable, fault-tolerant, and versatile options. Integrating it with NFS leverages its full potential, while the independence of nodes guarantees high availability. Overall, embracing Ceph not only optimizes your tech environment but also equips you with essential skills applicable in professional realms of cloud and distributed computing.
+
+</div>
