@@ -1,0 +1,107 @@
+---
+title: 'How to create SSH keys on Linux'
+date: '2025-03-12'
+summary: 'This post provides a comprehensive guide on creating SSH keys on Linux to enhance your system's security and streamline authentication processes.'
+tags: ['SSH', 'Security', 'Linux', 'SysAdmin', 'SSH Keys', 'Authentication', 'Network Security']
+draft: 'false'
+authors: ['default']
+---
+
+<div align="justify">
+
+SSH keys are essential tools for secure access to remote systems. Have you ever wondered how these keys can enhance your security framework while providing a seamless login experience? In an era where cybersecurity threats are rampant, understanding SSH key generation and management becomes vital. This guide will take you through the process of creating SSH keys on Linux, ensuring your systems remain safe and efficient.
+
+</div>
+---
+
+<div align="justify">
+
+## Understanding SSH Keys
+SSH (Secure Shell) keys are a pair of cryptographic keys that provide an alternative to password-based authentication for logging into servers. The keys consist of a private key, kept secret, and a public key, which can be shared freely. The primary advantages of SSH keys over passwords include:
+
+1. **Security**: SSH keys are much more secure than password authentication. It is virtually impossible to brute-force a private key compared to trying multiple passwords.
+2. **Convenience**: Once set up, SSH keys allow users to log in without entering a password, thus streamlining workflows, especially for system administrators who manage multiple servers.
+3. **Scriptability**: Automating remote server logins in scripts is more secure and efficient with SSH keys.
+
+## Generating SSH Keys on Linux
+The process of creating SSH keys on a Linux system is straightforward. Follow these detailed steps:
+
+### Step 1: Open the Terminal
+You can access the command line interface by using the following shortcut:
+```bash
+Ctrl + Alt + T
+```
+
+### Step 2: Generate the SSH Key Pair
+Run the following command:
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+This command generates a new RSA key pair for SSH access, with a specified bit length of 4096. The `-C` flag is a comment to help identify the key later.
+
+### Expected Output:
+```bash
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/username/.ssh/id_rsa):
+```
+
+### Step 3: Save the Key Pair
+Press `Enter` to accept the default file location, or provide a custom path.
+
+### Step 4: Set a Passphrase (Optional)
+You will be prompted to enter a passphrase for added security. Input a strong passphrase or leave it empty for no passphrase:
+```bash
+Enter passphrase (empty for no passphrase):
+```
+
+### Step 5: Locate Your Keys
+Your generated SSH keys are typically stored in the `~/.ssh` directory. You can list them with:
+```bash
+ls ~/.ssh/
+```
+### Expected Output:
+```bash
+id_rsa  id_rsa.pub
+```
+The `id_rsa` file is your private key, while `id_rsa.pub` is your public key.
+
+## Copying the Public Key to a Remote Server
+After generating your keys, the next step is to copy the public key to the remote server you want to access.
+
+### Using ssh-copy-id
+You can use `ssh-copy-id` to copy your public key easily:
+```bash
+ssh-copy-id user@remote_host
+```
+Replace `user` with your username and `remote_host` with the IP address or hostname of the server.
+
+### Expected Output:
+```bash
+The authenticity of host 'remote_host (IP)' can't be established.
+ECDSA key fingerprint is SHA256:...
+Are you sure you want to continue connecting (yes/no)? yes
+```
+
+### Testing the SSH Connection
+Once the public key has been copied, you can test your SSH connection:
+```bash
+ssh user@remote_host
+```
+If successful, you should be logged in without being prompted for a password.
+
+## Troubleshooting Common Issues
+1. **Permission Denied (publickey)**: Ensure your public key is added to the `~/.ssh/authorized_keys` file on the remote server. Check for correct permissions on the `~/.ssh` folder and the `authorized_keys` file:
+   ```bash
+   chmod 700 ~/.ssh
+   chmod 600 ~/.ssh/authorized_keys
+   ```
+2. **Key Not Found**: Make sure you are referencing the correct key file. Specify it explicitly if it is not in the default location:
+   ```bash
+   ssh -i ~/.ssh/custom_id_rsa user@remote_host
+   ```
+3. **Firewall Issues**: Verify that the server's firewall is not blocking SSH traffic. Ensure port 22 is open.
+
+## Conclusion
+SSH keys are a fundamental aspect of maintaining security and efficiency in system administration. By following the steps outlined in this guide, you will enhance your security posture while simplifying the management of remote server access. Remember to safeguard your private keys diligently and consider employing passphrases for added security. Embrace the power of SSH keys and elevate your IT practices further.
+
+</div>
