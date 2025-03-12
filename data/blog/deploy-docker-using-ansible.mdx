@@ -1,0 +1,118 @@
+---
+title: 'How to deploy Docker on a server using Ansible'
+date: '2025-03-11'
+summary: 'Learn how to automate Docker deployment on your server using Ansible for efficient and reliable infrastructure management in Linux environments.'
+tags: ['Docker', 'Ansible', 'Automation', 'IaC', 'Ubuntu', 'Linux', 'Server Deployment']
+draft: 'false'
+authors: ['default']
+---
+
+<div align="justify">
+
+## Introduction
+Deploying Docker on servers can streamline application deployment and management. In a world increasingly reliant on containerization, how can we leverage automation tools like Ansible to simplify Docker installations? This guide provides a concise, step-by-step approach to deploying Docker on an Ubuntu server using Ansible, enhancing your Infrastructure as Code (IaC) skills and ensuring efficient deployment processes.
+
+</div>
+---
+
+<div align="justify">
+
+### Understanding Ansible and Docker
+Ansible is a powerful automation tool that utilizes a simple, agentless architecture to manage systems based on a push model. Docker, on the other hand, enables you to package applications into containers, which are lightweight and portable. By combining Ansible with Docker, you can automate the entire lifecycle of your containerized applications.
+
+### Prerequisites
+Before we begin, ensure you have the following:
+- **An Ubuntu server** (18.04 or later) available and accessible.
+- **Ansible installed** on your control machine (the machine from which you will run the Ansible playbook). Installation can be done using:
+  ```bash
+  sudo apt update
+  sudo apt install software-properties-common
+  sudo add-apt-repository --yes --update ppa:ansible/ansible
+  sudo apt install ansible
+  ```  
+- **SSH access** to the target Ubuntu server.
+  ```bash
+  ssh user@your_server_ip
+  ```  
+
+### Setting Up Your Ansible Playbook
+Create a directory for your Ansible playbook, and navigate to it:
+```bash
+mkdir docker-deployment
+cd docker-deployment
+```  
+Next, create a file named `docker-install.yml`:
+```yaml
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Update APT package index
+      apt:
+        update_cache: yes
+
+    - name: Install necessary packages
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+        state: present
+
+    - name: Add Docker’s official GPG key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Set up the stable repository
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+        state: present
+
+    - name: Install Docker
+      apt:
+        name: docker-ce
+        state: present
+
+    - name: Ensure Docker service is running
+      service:
+        name: docker
+        state: started
+        enabled: yes
+```  
+This playbook covers:
+- Updating the APT cache
+- Installing required software
+- Adding Docker’s GPG key and repository
+- Installing Docker and ensuring the service is running.
+
+### Running the Ansible Playbook
+Before running the playbook, ensure your inventory file is set up. Create a file named `hosts`:
+```ini
+[myservers]
+your_server_ip
+```  
+Run the playbook with the following command:
+```bash
+ansible-playbook -i hosts docker-install.yml
+```  
+You should see output indicating that tasks are running successfully. If everything goes well, at the end you can check that Docker is installed:
+```bash
+docker --version
+```  
+Expected output:
+```bash
+Docker version 20.10.x, build ...
+```  
+
+### Troubleshooting Common Issues
+1. **SSH Connection Issues**: Ensure your SSH keys are set up correctly.
+2. **Permission Denied**: Make sure you have `sudo` privileges on your Ubuntu server.
+3. **Docker Service Not Running**: Check logs using `sudo systemctl status docker` for potential hints on what went wrong.
+4. **Failed Package Installations**: Validate that the Ubuntu repositories are accessible and up-to-date.
+
+### Conclusion
+Using Ansible to deploy Docker simplifies the installation process and allows for reproducibility and consistency across environments. In an era where efficiency is paramount, automating deployments with tools like Ansible significantly reduces manual errors and enhances productivity. Whether you're managing a single server or orchestrating a complex infrastructure, mastering these tools will be invaluable for your operations. Start automating your deployments today!
+
+</div>
