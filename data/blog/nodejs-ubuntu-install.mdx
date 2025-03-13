@@ -1,0 +1,102 @@
+---
+title: 'How to install nodejs on Ubuntu 24.04'
+date: '2025-03-13'
+summary: 'This guide provides a comprehensive approach to installing Node.js on Ubuntu 24.04, covering various methods and troubleshooting tips.'
+tags: ['NodeJS', 'Ubuntu', 'Linux', 'JavaScript', 'Development', 'Installation', 'Web Development']
+draft: false
+authors: ['default']
+---
+
+<div align="justify">
+
+Are you ready to dive into the world of JavaScript server-side development with Node.js? If you're running Ubuntu 24.04, you're in luck! In this guide, we will walk you through several methods to install Node.js on your system, allowing you to leverage its non-blocking, event-driven architecture. Considering that Node.js powers a significant portion of the web today, mastering its installation is a crucial skill for developers. Let's get started!
+
+</div>
+---
+
+<div align="justify">
+
+## 1. Understanding Node.js and Its Importance
+Node.js is a powerful JavaScript runtime built on Chrome's V8 engine. It allows developers to build scalable network applications and is well-suited for data-intensive, real-time applications. Understanding how Node.js functions will greatly enhance your ability as a developer and improve your application performance.
+
+## 2. Using the NodeSource Repository for Installation
+The simplest and most common way to install Node.js on Ubuntu is using the NodeSource repository. This method ensures you get the latest version.
+
+### Step 1: Update Package Index
+Before installing Node.js, it's good practice to update your package index:
+```bash
+sudo apt update
+```
+### Step 2: Install Dependencies
+You'll need to install `curl`, which is used to download the setup script:
+```bash
+sudo apt install curl -y
+```
+### Step 3: Download and Run the NodeSource Setup Script
+To install Node.js, run the following commands to set up the repository for Node.js 18.x (adjust the version as necessary):
+```bash
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+```
+### Step 4: Install Node.js
+Now that the repository is set up, you can install Node.js using:
+```bash
+sudo apt install nodejs -y
+```
+### Step 5: Verify Installation
+To confirm that Node.js and npm were installed correctly, check their versions:
+```bash
+node -v
+npm -v
+```
+Expected output:
+```
+v18.x.x
+8.x.x
+```
+
+## 3. Installing Node.js Using nvm (Node Version Manager)
+If you prefer managing multiple versions of Node.js, consider using nvm, which allows you to install and switch between different versions easily.
+
+### Step 1: Install nvm
+First, download and install nvm using cURL:
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+```
+### Step 2: Activate nvm
+You need to either restart your terminal or use the following command to load nvm:
+```bash
+export NVM_DIR="$(dirname $(which nvm))"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+```
+### Step 3: Install Node.js Using nvm
+You can now install Node.js with the following command (replace `18` with your desired version):
+```bash
+nvm install 18
+```
+### Step 4: Use a Specific Version of Node.js
+To switch to a specific installed version):
+```bash
+nvm use 18
+```
+Verify the installation:
+```bash
+node -v
+```
+Expected output:
+```
+v18.x.x
+```
+
+## 4. Troubleshooting Common Installation Issues
+While installing Node.js, you might run into some issues. Here are common problems and their solutions:
+- **Issue: Permission Denied Error:** This happens if you try to install without root privileges. Always use `sudo` for installations that require administrative rights.
+- **Issue: npm Command Not Found:** If npm is not found after installation, ensure that your PATH environment variable is set correctly. You can add the following to your `~/.bashrc` or `~/.profile`:
+```bash
+export PATH=$PATH:$(npm bin -g)
+```
+- **Issue: nvm not found:** Make sure you've added the nvm initialization line to your `~/.bashrc` or `~/.zshrc` file, and restart your terminal.
+
+## Conclusion
+Installing Node.js on Ubuntu 24.04 is a straightforward process, whether you use the NodeSource repository or nvm. Both methods are effective, but your choice may depend on your specific needs for managing Node.js versions. Mastering this installation will set a solid foundation for your web development projects using JavaScript and Node.js. Happy coding!
+
+</div>
