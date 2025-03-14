@@ -1,0 +1,169 @@
+---
+title: 'How to install VirtualBox on CentOS 8'
+date: '2025-03-14'
+summary: 'This guide provides a step-by-step approach to installing VirtualBox on CentOS 8, detailing dependencies, installation, and troubleshooting.'
+tags: ['VirtualBox', 'CentOS 8', 'Virtualization', 'Linux', 'Installation', 'How-to', 'Tech Tips']
+draft: false
+authors: ['default']
+---
+
+<div align="justify">
+
+Are you looking to run multiple operating systems on your CentOS 8 machine? VirtualBox is an excellent solution for virtualization, allowing you to create and manage virtual machines effortlessly. With proper installation, you can leverage VirtualBox's features to enhance productivity and test applications in isolated environments. In this guide, we will walk you through the installation process of VirtualBox on CentOS 8, providing insights into prerequisites, commands, and troubleshooting tips.
+
+</div>
+---
+
+<div align="justify">
+
+## Prerequisites for Installing VirtualBox
+
+Before proceeding with the installation, ensure your CentOS 8 system is up to date and that you have administrative privileges. You can update your system using the following command:
+
+```bash
+sudo dnf update
+```
+
+## Enable the EPEL Repository
+
+VirtualBox requires the EPEL (Extra Packages for Enterprise Linux) repository for some of its dependencies. To enable EPEL, run:
+
+```bash
+sudo dnf install epel-release
+```
+
+### Expected Output:
+
+```plaintext
+Dependencies resolved.
+================================================================================
+ Package                Architecture    Version               Repository       Size
+================================================================================
+Installing:
+ epel-release           noarch          8-11.el8             epel           15 k
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 15 k
+Installed size: 20 k
+Is this ok [y/N]: y
+```
+
+## Install Required Dependencies
+
+VirtualBox installation requires certain kernel headers and development tools. Run the following command to install them:
+
+```bash
+sudo dnf install gcc make perl kernel-headers kernel-devel
+```
+
+### Expected Output:
+
+```plaintext
+Dependencies resolved.
+================================================================================
+ Package               Architecture    Version               Repository      Size
+================================================================================
+Installing:
+ gcc                   x86_64          10.2.1-6.el8         baseos         3.7 M
+ make                  x86_64          1:4.2.1-10.el8       appstream      286 k
+ perl                  x86_64          4:5.26.3-418.el8     baseos        3.2 M
+ kernel-headers        x86_64          4.18.0-240.1.el8     baseos        1.1 M
+ kernel-devel          x86_64          4.18.0-240.1.el8     baseos        4.9 M
+
+Transaction Summary
+================================================================================
+Install  5 Packages
+
+Total size: 13 M
+Is this ok [y/N]: y
+```
+
+## Download and Install VirtualBox
+
+After meeting the prerequisites, download the VirtualBox RPM package for CentOS 8. Visit the [official VirtualBox downloads page](https://www.virtualbox.org/wiki/Downloads) for the latest version link.
+
+For example, to download VirtualBox version 6.1, you can use:
+
+```bash
+wget https://download.virtualbox.org/virtualbox/6.1.28/VirtualBox-6.1-6.1.28_147628_rhel8-1.x86_64.rpm
+```
+
+Then, install the downloaded package using:
+
+```bash
+sudo dnf install ./VirtualBox-6.1-6.1.28_147628_rhel8-1.x86_64.rpm
+```
+
+### Expected Output:
+
+```plaintext
+Dependencies resolved.
+================================================================================
+ Package                Architecture    Version                                Repository            Size
+================================================================================
+Installing:
+ VirtualBox            x86_64          6.1.28_147628_rhel8-1                 @commandline         6.0 M
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total size: 6.0 M
+Is this ok [y/N]: y
+```
+
+## Load VirtualBox Kernel Modules
+
+After installation, load the required VirtualBox kernel modules:
+
+```bash
+sudo /sbin/vboxconfig
+```
+
+### Expected Output:
+
+```plaintext
+Setting up controls to show current version. This may take a moment...
+```
+
+## Verifying the Installation
+
+To confirm that VirtualBox is installed correctly, execute:
+
+```bash
+VBoxManage --version
+```
+
+### Expected Output:
+
+```plaintext
+6.1.28
+```
+
+This output indicates that VirtualBox has been successfully installed and is recognized by your system. You can now start VirtualBox with:
+
+```bash
+virtualbox
+```
+
+## Troubleshooting Common Issues
+
+In case you encounter issues during installation, consider the following:
+- Ensure that the kernel headers match the kernel version. Check your kernel version with:
+  ```bash
+  uname -r
+  ```
+- Reinstall the relevant packages if necessary:
+  ```bash
+  sudo dnf reinstall kernel-headers kernel-devel
+  ```
+- Review and install any missing dependencies listed in the installation errors.
+
+## Conclusion
+
+Installing VirtualBox on CentOS 8 is a straightforward process that can greatly enhance your productivity by allowing you to create and manage virtual machines. By following the steps above, you can ensure a smooth installation experience, empowering your development and testing workflows while taking advantage of Linux's powerful virtualization capabilities.
+
+</div>
