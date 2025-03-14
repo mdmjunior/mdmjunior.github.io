@@ -1,0 +1,146 @@
+---
+title: 'How to configure a basic firewall on your Ubuntu using ufw'
+date: '2025-03-14'
+summary: 'This post guides you through configuring a basic firewall on Ubuntu using ufw, offering practical examples and troubleshooting tips.'
+tags: ['firewall', 'Ubuntu', 'ufw', 'sysadmin', 'Linux', 'network security', 'configuration']
+draft: false
+authors: ['default']
+---
+
+<div align="justify">
+
+In today's digital age, securing your network is more important than ever. Have you recently set up an Ubuntu server and are wondering how to enhance its security? Utilizing the Uncomplicated Firewall (UFW) is one of the most effective and user-friendly solutions available. This guide will walk you through the steps to configure UFW, ensuring that your server is both protected and functional.
+
+</div>
+---
+
+<div align="justify">
+
+# Understanding UFW
+
+UFW, or Uncomplicated Firewall, is a front-end for managing iptables firewall rules in Linux. It simplifies the process of setting up a firewall while still providing robust capabilities for skilled users.
+
+## Installing UFW
+
+Before configuring UFW, it must be installed. Most modern Ubuntu installations come with UFW pre-installed, but if it's not present, you can easily install it with the following command:
+
+```bash
+sudo apt update
+sudo apt install ufw
+```
+
+After installation, you can verify that UFW is available by running:
+
+```bash
+ufw --version
+```
+
+Expected output:
+```
+UFW <version>
+```
+
+## Checking UFW Status
+
+It's essential to understand the current state of your firewall. You can check whether UFW is active with:
+
+```bash
+sudo ufw status verbose
+```
+
+Expected output:
+```
+Status: inactive
+```
+
+If UFW is inactive, you’ll want to enable it once you have configured your rules to avoid accidentally locking yourself out of your server.
+
+## Configuring Basic Rules
+
+The primary purpose of a firewall is to allow or deny traffic. Here are the steps to create basic rules for your Ubuntu server:
+
+### Allowing SSH Access
+
+Typically, you'll want to allow SSH (port 22) to ensure you can remotely administer your server:
+
+```bash
+sudo ufw allow ssh
+```
+
+This command is equivalent to specifying the port directly:
+
+```bash
+sudo ufw allow 22/tcp
+```
+
+### Allowing Other Services
+
+In addition to SSH, you may want to open additional ports depending on the services running on your server. Here are a few examples:
+- To allow HTTP traffic (port 80):
+
+```bash
+sudo ufw allow 80/tcp
+```
+
+- For HTTPS traffic (port 443):
+
+```bash
+sudo ufw allow 443/tcp
+```
+
+You can confirm the rules you've set up:
+
+```bash
+sudo ufw status
+```
+
+Expected output should display allowed services. For example:
+```
+Status: active
+
+To                         Action      From
+--                         ------      ----
+22                         ALLOW       Anywhere
+80                         ALLOW       Anywhere
+443                        ALLOW       Anywhere
+```
+
+## Enabling UFW
+
+Once your rules are set up, it’s time to enable UFW:
+
+```bash
+sudo ufw enable
+```
+
+Expected output:
+```
+Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
+Firewall is active and enabled on system startup
+```
+
+**Warning:** Make sure you've allowed SSH before enabling UFW to avoid being locked out of your server!
+
+## Troubleshooting UFW
+
+If you find that UFW isn't working as expected, here are some common troubleshooting steps:
+- **Check the active rules:** Always verify your current rules with `sudo ufw status`.
+- **Review logs:** UFW logs can provide insight into blocked connections. Enable logging with:
+
+```bash
+sudo ufw logging on
+```
+
+Then check logs located at `/var/log/ufw.log`.
+
+- **Reset UFW if necessary:** If you need to start over, you can reset all rules with:
+
+```bash
+sudo ufw reset
+```
+
+## Conclusion
+
+Configuring a firewall using UFW on Ubuntu is not merely a precaution but a foundational step in securing your system. By allowing only necessary traffic while securing the unused ports, you significantly reduce the attack surface of your server. Remember, regularly reviewing and updating your firewall rules is critical to maintaining a secure server environment.
+
+</div>
