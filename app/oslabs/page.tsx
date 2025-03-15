@@ -1,9 +1,8 @@
 import { Authors, OSLabs, allAuthors, allOSLabs } from 'contentlayer/generated'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
-import AuthorLayout from '@/layouts/OSlayout'
+import OSlayout from '@/layouts/OSlayout'
 import { coreContent } from 'pliny/utils/contentlayer'
 import { genPageMetadata } from 'app/seo'
-import OSlayout from '@/layouts/OSlayout'
 
 export const metadata = genPageMetadata({ title: 'OSLabs' })
 
