@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function OSlayout({ children, content }: Props) {
-  const { name, logot, industry, webpage, email, linkedin, github } = content
+  const { name, logot, industry, email, webpage, github } = content
 
   return (
     <>
@@ -32,13 +32,10 @@ export default function OSlayout({ children, content }: Props) {
             )}
             <h3 className="pt-4 pb-2 text-2xl leading-8 font-semibold tracking-tight">{name}</h3>
             <div className="text-gray-500 dark:text-gray-400">{industry}</div>
-            <div className="font-semibold text-gray-500 uppercase dark:text-gray-400">
-              {webpage}
-            </div>
             <div className="flex space-x-4 pt-6">
               <SocialIcon kind="mail" href={`mailto:${email}`} />
               <SocialIcon kind="github" href={github} />
-              <SocialIcon kind="linkedin" href={linkedin} />
+              <SocialIcon kind="linkedin" href={webpage} />
             </div>
           </div>
           <div className="prose dark:prose-invert text-align:justify max-w-none pt-8 pb-8 xl:col-span-2">
