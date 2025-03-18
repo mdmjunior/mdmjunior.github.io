@@ -1,0 +1,115 @@
+---
+title: 'How to install n8n self-hosted on Docker'
+date: '2025-03-18'
+summary: 'This post guides you through the process of installing n8n self-hosted on Docker, focusing on configuration, optimization, and troubleshooting.'
+tags: ['n8n', 'Docker', 'DevOps', 'Automation', 'Containers', 'Linux', 'Self-Hosted']
+draft: false
+authors: ['default']
+---
+
+<div align="justify">
+
+In today's fast-paced digital landscape, automation tools like n8n are increasingly vital for streamlining workflows and enhancing productivity. Are you looking to harness the power of n8n while maintaining full control over your data? This guide will walk you through the installation of n8n as a self-hosted solution using Docker, providing flexibility, scalability, and robust performance.
+
+</div>
+---
+
+<div align="justify">
+
+### Understanding n8n and its Benefits
+
+n8n is a powerful open-source workflow automation tool that allows you to connect various apps and services to automate tasks easily. Self-hosting n8n gives you full ownership of your data, improved security, and the ability to customize workflows as per your needs.
+
+### Prerequisites
+
+Before diving into the installation: 
+1. **Docker**: Make sure Docker is installed on your Linux system. You can verify your installation with:
+   ```bash
+   docker --version
+   ``` 
+   **Expected Output:**
+   ```
+   Docker version 20.10.7, build f0df350
+   ```
+   If Docker is not installed, you can follow the official installation guide specific to your Linux distribution.
+2. **Docker-Compose**: This tool is useful for managing multi-container Docker applications. Check if it’s installed with:
+   ```bash
+   docker-compose --version
+   ```
+   **Expected Output:**
+   ```
+   docker-compose version 1.29.2, build 1110ad01
+   ```
+   Install Docker-Compose if required by following the [official documentation](https://docs.docker.com/compose/install/).
+
+### Step 1: Setting Up the n8n Docker Environment
+
+To set up n8n with Docker, create a new directory for the project:
+```bash
+mkdir n8n-docker && cd n8n-docker
+```
+
+Next, create a `docker-compose.yml` file inside this directory with the following content:
+```yaml
+version: '3'
+services:
+  n8n:
+    image: n8n/n8n
+    restart: always
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=username
+      - N8N_BASIC_AUTH_PASSWORD=password
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - NODE_ENV=production
+    ports:
+      - "5678:5678"
+    volumes:
+      - ~/.n8n:/home/node/.n8n
+```  
+Replace `username` and `password` with your choice of credentials.
+
+### Step 2: Launching n8n
+
+Once the `docker-compose.yml` file is ready, start the n8n service by executing:
+```bash
+docker-compose up -d
+```
+**Expected Output:**
+You’ll see output messages indicating that Docker is pulling the n8n image and starting the container. If all goes well, you can access n8n by navigating to `http://localhost:5678` in your browser.
+
+### Step 3: Verifying Your Installation
+
+To check if n8n is running correctly, you can use:
+```bash
+docker ps
+```
+**Expected Output:**
+```  
+CONTAINER ID    IMAGE              COMMAND                  CREATED         STATUS         PORTS                     NAMES
+f1b94a5f3bc6    n8n/n8n          "tini -- /bin/sh -c …"  5 seconds ago   Up 4 seconds   0.0.0.0:5678->5678/tcp   n8n_docker_n8n_1
+```  
+### Step 4: Persisting Data
+
+To ensure you don’t lose your workflows and data, n8n uses a volume mounted to `~/.n8n`. Every time you run n8n, it will store the data in this directory. To check your stored data, simply navigate to the folder in your file system:
+```bash
+ls ~/.n8n
+```  
+### Troubleshooting Common Issues
+
+If you encounter problems while running n8n, here are some common troubleshooting steps:
+1. **Port Conflicts**: Ensure no other applications are using port 5678. Change the port in the `docker-compose.yml` file if required.
+2. **Container Crashes**: Check the logs of the Docker container for any errors:
+   ```bash
+docker-compose logs n8n
+```  
+   Look for error messages to identify what might be going wrong.
+
+3. **Authentication Issues**: Ensure that the credentials you set in `N8N_BASIC_AUTH_USER` and `N8N_BASIC_AUTH_PASSWORD` are being input correctly in the browser.
+
+### Conclusion
+
+Self-hosting n8n with Docker is an excellent way to harness the power of automation while retaining control over your environment. With the steps outlined, you should now have a functioning n8n installation tailored to your needs. Make use of this workflow automation tool to integrate and simplify tasks across various applications seamlessly.
+
+</div>
