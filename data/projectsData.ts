@@ -10,7 +10,7 @@ const projectsData: Project[] = [
   {
     title: 'AutoM8 - Linux Ubuntu Post-Install Tool',
     description: `A set of shell scripts to automate the process of installing software on Ubuntu Desktop`,
-    imgSrc: '/static/images/AutoM8.png',
+    imgSrc: '/static/images/autom8logo.png',
     href: 'https://github.com/mdmjunior/AutoM8',
     repo: 'https://github.com/mdmjunior/AutoM8',
   },
