@@ -4,7 +4,7 @@ const siteMetadata = {
   author: 'Marcio Moreira Junior',
   headerTitle: 'Marcio Moreira Junior',
   description:
-    'Technical landing page for Marcio Moreira Junior: Linux Engineer, DevOps, SRE, developer and creator of open source and personal software projects.',
+    'GitHub projects and experiments by Marcio Moreira Junior: Linux Engineer, DevOps, SRE and curious as fuck about automation, infrastructure and open source.',
   language: 'en-us',
   theme: 'system',
   siteUrl: 'https://mdmjunior.github.io',
@@ -14,11 +14,7 @@ const siteMetadata = {
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
   email: 'iam@marciomoreirajunior.com.br',
   github: 'https://github.com/mdmjunior',
-  x: 'https://x.com/oslabsmmoreira',
-  facebook: 'https://facebook.com/mdmjunior',
   linkedin: 'https://www.linkedin.com/in/mdmjunior',
-  instagram: 'https://www.instagram.com/marciomjunior',
-  medium: 'https://medium.com/@marcioduartejr',
   locale: 'en-US',
   stickyNav: true,
   analytics: {
