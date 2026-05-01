@@ -4,28 +4,28 @@ const projects = [
   {
     name: 'AutoM8',
     description:
-      'Automação pós-instalação para Linux, com foco em Ubuntu, Fedora, perfis de software e geração de scripts.',
+      'A Linux post-install automation project focused on Ubuntu, Fedora, software profiles and script generation.',
     href: 'https://github.com/mdmjunior/autom8',
     tags: ['Linux', 'Automation', 'Laravel', 'DevOps'],
   },
   {
     name: 'Muquirana',
     description:
-      'ERP pessoal em desenvolvimento para organização financeira, metas, contas, categorias e rotina financeira.',
+      'A personal ERP experiment for financial organization, goals, accounts, categories and everyday money management.',
     href: 'https://github.com/mdmjunior/muquirana',
     tags: ['Next.js', 'PostgreSQL', 'Prisma', 'Finance'],
   },
   {
     name: 'marciomoreirajunior.com.br',
     description:
-      'Site oficial, portfólio, currículo, blog e presença profissional de Marcio Moreira Junior.',
+      'My official website, personal portfolio, resume, blog and professional presence on the web.',
     href: 'https://www.marciomoreirajunior.com.br',
     tags: ['Portfolio', 'Blog', 'Personal Brand'],
   },
   {
     name: 'OSLabs',
     description:
-      'Iniciativas, produtos e experimentos técnicos ligados à OSLabs, com foco em software, automação e infraestrutura.',
+      'A space for technical experiments, product ideas and infrastructure-focused projects around automation and software.',
     href: 'https://www.oslabs.com.br',
     tags: ['OSLabs', 'Products', 'Labs'],
   },
@@ -33,7 +33,7 @@ const projects = [
 
 const links = [
   {
-    label: 'Site oficial',
+    label: 'Official site',
     href: 'https://www.marciomoreirajunior.com.br',
   },
   {
@@ -64,21 +64,8 @@ export default function Page() {
           </h1>
 
           <p className="max-w-3xl text-lg leading-8 text-gray-600 dark:text-gray-300">
-            Linux Engineer, DevOps, SRE and developer building tools, automations, infrastructure
-            experiments and personal software products.
-          </p>
-
-          <p className="max-w-3xl text-base leading-7 text-gray-500 dark:text-gray-400">
-            This GitHub Pages site is a technical landing page for selected projects. The official
-            website, professional profile, resume, contact information and main content are
-            available at{' '}
-            <Link
-              href="https://www.marciomoreirajunior.com.br"
-              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 font-semibold"
-            >
-              www.marciomoreirajunior.com.br
-            </Link>
-            .
+            Linux Engineer, DevOps, SRE and curious as fuck about automation, infrastructure,
+            open source, software experiments and building useful things.
           </p>
         </div>
 
@@ -96,13 +83,10 @@ export default function Page() {
       </section>
 
       <section className="py-10">
-        <div className="mb-8 space-y-2">
+        <div className="mb-8">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
-            Selected projects
+            Currently working on these things
           </h2>
-          <p className="text-gray-500 dark:text-gray-400">
-            A short list of projects, products and experiments connected to my technical work.
-          </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
