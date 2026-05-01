@@ -4,7 +4,7 @@ import Logo from '@/data/logo.svg'
 import Link from './Link'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
-import SocialIcon from '@/components/social-icons'
+import { Github } from './social-icons/icons'
 
 const iconClass =
   'hover:text-primary-500 dark:hover:text-primary-400 flex h-[42px] w-[42px] items-center justify-center text-gray-900 dark:text-gray-100'
@@ -24,7 +24,14 @@ const SparklesIcon = () => (
 
 const NavIcon = ({ icon }: { icon?: string }) => {
   if (icon === 'home') return <HomeIcon />
-  if (icon === 'github') return <SocialIcon kind="github" href="https://github.com/mdmjunior" size={7} />
+  if (icon === 'github') {
+    return (
+      <Github
+        className="hover:text-primary-500 dark:hover:text-primary-400 h-7 w-7 fill-current text-gray-900 dark:text-gray-100"
+        aria-hidden="true"
+      />
+    )
+  }
   if (icon === 'sparkles') return <SparklesIcon />
   return null
 }
