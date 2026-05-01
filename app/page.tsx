@@ -64,8 +64,7 @@ export default function Page() {
           </h1>
 
           <p className="max-w-3xl text-lg leading-8 text-gray-600 dark:text-gray-300">
-            Linux Engineer, DevOps, SRE and curious as fuck about automation, infrastructure, open
-            source, software experiments and building useful things.
+            Linux Engineer, DevOps, SRE, Cloud Engineer
           </p>
         </div>
 
