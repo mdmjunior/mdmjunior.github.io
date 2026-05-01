@@ -1,5 +1,4 @@
 import Link from '@/components/Link'
-import siteMetadata from '@/data/siteMetadata'
 
 const projects = [
   {
@@ -134,22 +133,6 @@ export default function Page() {
               </div>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section className="mt-10 rounded-2xl border border-gray-200 p-6 dark:border-gray-800">
-        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">Official website</h2>
-        <p className="mt-3 text-gray-500 dark:text-gray-400">
-          For the complete professional profile, resume, contact channels, articles and personal
-          presentation, visit the official website.
-        </p>
-        <div className="mt-5">
-          <Link
-            href={siteMetadata.officialSite}
-            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-base font-semibold"
-          >
-            Visit www.marciomoreirajunior.com.br →
-          </Link>
         </div>
       </section>
     </main>
