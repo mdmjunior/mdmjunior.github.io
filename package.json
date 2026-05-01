@@ -1,6 +1,6 @@
 {
   "name": "mdmjunior-github-projects",
-  "version": "2.3.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "next dev",
@@ -8,15 +8,13 @@
     "build": "cross-env INIT_CWD=$PWD next build",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
-    "lint": "next lint --fix --dir app --dir components --dir data",
+    "lint": "eslint --fix app components data",
     "prepare": "husky"
   },
   "dependencies": {
     "@headlessui/react": "2.2.0",
     "@next/bundle-analyzer": "15.1.4",
-    "@tailwindcss/forms": "^0.5.9",
     "@tailwindcss/postcss": "^4.0.5",
-    "@tailwindcss/typography": "^0.5.15",
     "body-scroll-lock": "^4.0.0-beta.0",
     "esbuild": "0.20.2",
     "next": "15.1.4",
