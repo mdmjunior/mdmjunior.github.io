@@ -1,9 +1,8 @@
 const headerNavLinks = [
-  { href: '/blog', title: 'Blog' },
-  { href: '/tags', title: 'Tags' },
-  { href: '/projects', title: 'Projects' },
-  { href: '/about', title: 'About Me' },
-  { href: '/oslabs', title: 'OSLabs' },
+  { href: '/', title: 'Projects' },
+  { href: 'https://www.marciomoreirajunior.com.br', title: 'Official Site' },
+  { href: 'https://github.com/mdmjunior', title: 'GitHub' },
+  { href: 'https://www.oslabs.com.br', title: 'OSLabs' },
 ]
 
 export default headerNavLinks
