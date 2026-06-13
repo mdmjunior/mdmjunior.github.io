@@ -28,7 +28,7 @@ jobs:
       - name: Prepare Yarn
         run: corepack prepare yarn@3.6.1 --activate
       - id: configurepages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
       - name: Restore cache
         uses: actions/cache@v4
         with:
