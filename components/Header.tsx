@@ -63,7 +63,7 @@ const Header = () => {
               <Link
                 key={link.title}
                 href={link.href}
-                className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-bold text-slate-600 transition hover:bg-slate-100 hover:text-primary-600 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-primary-300"
+                className="hover:text-primary-600 dark:hover:text-primary-300 inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-bold text-slate-600 transition hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-white/10"
                 aria-label={link.title}
               >
                 <NavIcon icon={link.icon} />

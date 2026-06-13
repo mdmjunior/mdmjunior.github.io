@@ -24,7 +24,10 @@ export default function Footer() {
 
       <div className="mt-8 flex flex-col justify-between gap-3 text-sm text-slate-500 sm:flex-row dark:text-slate-400">
         <div>{`© ${new Date().getFullYear()} Marcio Moreira Junior`}</div>
-        <Link href="https://github.com/mdmjunior/mdmjunior.github.io" className="hover:text-primary-600 dark:hover:text-primary-300">
+        <Link
+          href="https://github.com/mdmjunior/mdmjunior.github.io"
+          className="hover:text-primary-600 dark:hover:text-primary-300"
+        >
           Source on GitHub
         </Link>
       </div>

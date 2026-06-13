@@ -144,7 +144,7 @@ input:-webkit-autofill:focus {
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-primary-300) 55%, transparent);
+    background: var(--color-primary-200);
     color: var(--color-gray-950);
   }
 }
