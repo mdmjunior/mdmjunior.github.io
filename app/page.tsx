@@ -22,7 +22,6 @@ export default function Page() {
   return (
     <div className="relative -mx-4 overflow-hidden px-4 pb-16 sm:-mx-6 sm:px-6 xl:mx-0 xl:px-0">
       <div className="pointer-events-none absolute inset-x-1/2 top-0 -z-10 h-96 w-[64rem] -translate-x-1/2 rounded-full bg-primary-400/20 blur-3xl dark:bg-primary-500/10" />
-      <div className="pointer-events-none absolute inset-0 -z-20 bg-[linear-gradient(to_right,rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.06)_1px,transparent_1px)] bg-[size:72px_72px] opacity-40 dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)]" />
 
       <section className="grid min-h-[72vh] items-center gap-10 py-16 lg:grid-cols-[1.15fr_0.85fr] lg:py-24">
         <div className="space-y-8">
