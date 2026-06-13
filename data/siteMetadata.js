@@ -1,10 +1,10 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Marcio Moreira Junior — Technical Projects',
+  title: 'Marcio Moreira Junior — Tech Lab',
   author: 'Marcio Moreira Junior',
-  headerTitle: 'MDMJUNIOR',
+  headerTitle: 'TECH LAB',
   description:
-    'Technical projects and experiments by Marcio Moreira Junior, focused on Linux, DevOps, SRE, cloud engineering, automation and practical software products.',
+    'Technical projects and experiments, focused on Linux, DevOps, SRE, cloud engineering, automation and practical software products.',
   language: 'en-us',
   theme: 'system',
   siteUrl: 'https://mdmjunior.github.io',
