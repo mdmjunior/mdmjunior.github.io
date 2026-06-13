@@ -1,14 +1,17 @@
 {
-  "name": "mdmjunior-github-projects",
+  "name": "marcios-tech-lab",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "next dev",
     "dev": "cross-env INIT_CWD=$PWD next dev",
     "build": "cross-env INIT_CWD=$PWD next build",
-    "serve": "next start",
+    "build:pages": "cross-env EXPORT=1 UNOPTIMIZED=1 next build",
+    "lint": "eslint --fix app components data next.config.js",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "check": "yarn lint && yarn typecheck && yarn build:pages",
+    "audit": "yarn npm audit",
     "analyze": "cross-env ANALYZE=true next build",
-    "lint": "eslint --fix app components data",
     "prepare": "husky"
   },
   "dependencies": {
@@ -53,5 +56,8 @@
       "prettier --write"
     ]
   },
-  "packageManager": "yarn@3.6.1"
+  "packageManager": "yarn@3.6.1",
+  "engines": {
+    "node": ">=20 <23"
+  }
 }

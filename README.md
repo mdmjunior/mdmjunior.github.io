@@ -1,6 +1,6 @@
-# Marcio Moreira Junior — GitHub Projects
+# Marcio's Tech Lab
 
-A lightweight GitHub Pages experiment for selected projects, technical ideas and links connected to Marcio Moreira Junior.
+Personal technical lab by Marcio Moreira Junior, focused on Linux, DevOps, SRE, cloud engineering, automation and practical software projects.
 
 Live page:
 
@@ -14,7 +14,23 @@ https://www.marciomoreirajunior.com.br
 
 - Next.js
 - React
-- Tailwind CSS
 - GitHub Pages
 - GitHub Actions
 - Yarn
+
+## Local development
+
+Run:
+
+    yarn
+    yarn dev
+
+Open:
+
+    http://localhost:3000
+
+## Validation
+
+Run:
+
+    yarn check

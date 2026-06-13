@@ -1,11 +1,12 @@
 import Link from '@/components/Link'
 import ContactForm from './ContactForm'
 import siteMetadata from '@/data/siteMetadata'
+import { profile } from '@/data/profile'
 
 export default function ContactPage() {
-  const contactEmail = siteMetadata.email ?? 'iam@marciomoreirajunior.com.br'
-  const contactGithub = siteMetadata.github ?? 'https://github.com/mdmjunior'
-  const contactLinkedin = siteMetadata.linkedin ?? 'https://www.linkedin.com/in/mdmjunior'
+  const contactEmail = siteMetadata.email ?? profile.email
+  const contactGithub = siteMetadata.github ?? profile.links.github
+  const contactLinkedin = siteMetadata.linkedin ?? profile.links.linkedin
 
   return (
     <div className="grid gap-10 py-14 lg:grid-cols-[0.85fr_1.15fr]">
@@ -34,7 +35,7 @@ export default function ContactPage() {
           <p>
             GitHub:{' '}
             <Link href={contactGithub} className="text-primary-600 dark:text-primary-300 font-bold">
-              mdmjunior
+              {profile.githubHandle}
             </Link>
           </p>
           <p>
@@ -43,7 +44,7 @@ export default function ContactPage() {
               href={contactLinkedin}
               className="text-primary-600 dark:text-primary-300 font-bold"
             >
-              mdmjunior
+              {profile.linkedinHandle}
             </Link>
           </p>
         </div>

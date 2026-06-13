@@ -1,5 +1,6 @@
 import Link from './Link'
 import siteMetadata from '@/data/siteMetadata'
+import { profile } from '@/data/profile'
 import SocialIcon from '@/components/social-icons'
 
 export default function Footer() {
@@ -11,21 +12,25 @@ export default function Footer() {
             {siteMetadata.title}
           </p>
           <p className="mt-2 max-w-xl text-sm leading-6 text-slate-500 dark:text-slate-400">
-            Linux, automation, infrastructure and product experiments.
+            {profile.shortDescription}
           </p>
         </div>
 
         <div className="flex items-center gap-4">
-          <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={5} />
-          <SocialIcon kind="github" href={siteMetadata.github} size={5} />
-          <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={5} />
+          <SocialIcon kind="mail" href={`mailto:${siteMetadata.email ?? profile.email}`} size={5} />
+          <SocialIcon kind="github" href={siteMetadata.github ?? profile.links.github} size={5} />
+          <SocialIcon
+            kind="linkedin"
+            href={siteMetadata.linkedin ?? profile.links.linkedin}
+            size={5}
+          />
         </div>
       </div>
 
       <div className="mt-8 flex flex-col justify-between gap-3 text-sm text-slate-500 sm:flex-row dark:text-slate-400">
-        <div>{`© ${new Date().getFullYear()} Marcio Moreira Junior`}</div>
+        <div>{`© ${new Date().getFullYear()} ${profile.name}`}</div>
         <Link
-          href="https://github.com/mdmjunior/mdmjunior.github.io"
+          href={siteMetadata.siteRepo}
           className="hover:text-primary-600 dark:hover:text-primary-300"
         >
           Source on GitHub
