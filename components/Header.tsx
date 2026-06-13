@@ -39,9 +39,7 @@ const Header = () => {
       <div className="flex w-full items-center justify-between rounded-3xl border border-slate-200/80 bg-white/80 px-4 py-3 shadow-sm shadow-slate-950/5 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/75 dark:shadow-black/20">
         <Link href="/" aria-label={siteMetadata.headerTitle}>
           <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-950 p-2 text-white shadow-lg shadow-slate-950/15 dark:bg-white dark:text-slate-950">
-              <Logo />
-            </div>
+            <Logo className="h-10 w-auto shrink-0" aria-hidden="true" />
             {typeof siteMetadata.headerTitle === 'string' ? (
               <div className="hidden leading-tight sm:block">
                 <div className="text-sm font-black tracking-tight text-slate-950 dark:text-white">
