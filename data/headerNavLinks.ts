@@ -1,23 +1,28 @@
 const headerNavLinks = [
   {
-    href: 'https://www.marciomoreirajunior.com.br',
-    title: 'Official Site',
+    href: '/',
+    title: 'Home',
     icon: 'home',
   },
   {
-    href: 'https://github.com/mdmjunior',
-    title: 'GitHub',
-    icon: 'github',
+    href: '/about',
+    title: 'About',
+    icon: 'about',
   },
   {
-    href: 'https://www.linkedin.com/in/mdmjunior',
-    title: 'LinkedIn',
-    icon: 'linkedin',
+    href: '/projects',
+    title: 'Projects',
+    icon: 'projects',
   },
   {
-    href: 'https://www.oslabs.com.br',
-    title: 'OSLabs',
-    icon: 'sparkles',
+    href: '/library',
+    title: 'Library',
+    icon: 'library',
+  },
+  {
+    href: '/contact',
+    title: 'Contact',
+    icon: 'contact',
   },
 ]
 
