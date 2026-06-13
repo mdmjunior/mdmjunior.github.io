@@ -1,10 +1,10 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Marcio Moreira Junior — GitHub Projects',
+  title: 'Marcio Moreira Junior — Technical Projects',
   author: 'Marcio Moreira Junior',
-  headerTitle: 'Marcio Moreira Junior',
+  headerTitle: 'MDMJUNIOR',
   description:
-    'GitHub projects and experiments by Marcio Moreira Junior: Linux Engineer, DevOps, SRE and curious as fuck about automation, infrastructure and open source.',
+    'Technical projects and experiments by Marcio Moreira Junior, focused on Linux, DevOps, SRE, cloud engineering, automation and practical software products.',
   language: 'en-us',
   theme: 'system',
   siteUrl: 'https://mdmjunior.github.io',

@@ -77,9 +77,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <link rel="manifest" href={`${basePath}/static/favicons/site.webmanifest`} />
       <link rel="mask-icon" href={`${basePath}/static/favicons/logo.svg`} color="#5bbad5" />
       <meta name="msapplication-TileColor" content="#000000" />
-      <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
-      <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
-      <body className="bg-white pl-[calc(100vw-100%)] text-black antialiased dark:bg-gray-950 dark:text-white">
+      <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc" />
+      <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#020617" />
+      <body className="bg-slate-50 pl-[calc(100vw-100%)] text-slate-950 antialiased dark:bg-slate-950 dark:text-slate-50">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <SectionContainer>
