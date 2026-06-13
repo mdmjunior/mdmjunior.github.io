@@ -133,3 +133,18 @@ input:-webkit-autofill:focus {
   display: inline-block;
   vertical-align: middle;
 }
+
+@layer base {
+  html {
+    text-rendering: geometricPrecision;
+  }
+
+  body {
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-primary-300) 55%, transparent);
+    color: var(--color-gray-950);
+  }
+}
