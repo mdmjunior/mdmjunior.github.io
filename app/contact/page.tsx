@@ -3,6 +3,10 @@ import ContactForm from './ContactForm'
 import siteMetadata from '@/data/siteMetadata'
 
 export default function ContactPage() {
+  const contactEmail = siteMetadata.email ?? 'iam@marciomoreirajunior.com.br'
+  const contactGithub = siteMetadata.github ?? 'https://github.com/mdmjunior'
+  const contactLinkedin = siteMetadata.linkedin ?? 'https://www.linkedin.com/in/mdmjunior'
+
   return (
     <div className="grid gap-10 py-14 lg:grid-cols-[0.85fr_1.15fr]">
       <div>
@@ -21,25 +25,22 @@ export default function ContactPage() {
           <p>
             Email:{' '}
             <Link
-              href={`mailto:${siteMetadata.email}`}
+              href={`mailto:${contactEmail}`}
               className="text-primary-600 dark:text-primary-300 font-bold"
             >
-              {siteMetadata.email}
+              {contactEmail}
             </Link>
           </p>
           <p>
             GitHub:{' '}
-            <Link
-              href={siteMetadata.github}
-              className="text-primary-600 dark:text-primary-300 font-bold"
-            >
+            <Link href={contactGithub} className="text-primary-600 dark:text-primary-300 font-bold">
               mdmjunior
             </Link>
           </p>
           <p>
             LinkedIn:{' '}
             <Link
-              href={siteMetadata.linkedin}
+              href={contactLinkedin}
               className="text-primary-600 dark:text-primary-300 font-bold"
             >
               mdmjunior
