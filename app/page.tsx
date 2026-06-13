@@ -21,11 +21,11 @@ const ArrowIcon = () => (
 export default function Page() {
   return (
     <div className="relative -mx-4 overflow-hidden px-4 pb-16 sm:-mx-6 sm:px-6 xl:mx-0 xl:px-0">
-      <div className="pointer-events-none absolute inset-x-1/2 top-0 -z-10 h-96 w-[64rem] -translate-x-1/2 rounded-full bg-primary-400/20 blur-3xl dark:bg-primary-500/10" />
+      <div className="bg-primary-400/20 dark:bg-primary-500/10 pointer-events-none absolute inset-x-1/2 top-0 -z-10 h-96 w-[64rem] -translate-x-1/2 rounded-full blur-3xl" />
 
       <section className="grid min-h-[72vh] items-center gap-10 py-16 lg:grid-cols-[1.15fr_0.85fr] lg:py-24">
         <div className="space-y-8">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary-500/20 bg-white/75 px-4 py-2 text-xs font-semibold tracking-[0.25em] text-primary-700 uppercase shadow-sm shadow-primary-950/5 backdrop-blur dark:border-primary-400/20 dark:bg-white/5 dark:text-primary-300">
+          <div className="border-primary-500/20 text-primary-700 shadow-primary-950/5 dark:border-primary-400/20 dark:text-primary-300 inline-flex items-center gap-2 rounded-full border bg-white/75 px-4 py-2 text-xs font-semibold tracking-[0.25em] uppercase shadow-sm backdrop-blur dark:bg-white/5">
             Linux • DevOps • SRE • Cloud
           </div>
 
@@ -43,7 +43,7 @@ export default function Page() {
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link
               href="https://www.marciomoreirajunior.com.br"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-slate-950/15 transition hover:-translate-y-0.5 hover:bg-primary-600 dark:bg-white dark:text-slate-950 dark:hover:bg-primary-200"
+              className="hover:bg-primary-600 dark:hover:bg-primary-200 inline-flex items-center justify-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-slate-950/15 transition hover:-translate-y-0.5 dark:bg-white dark:text-slate-950"
             >
               Official website
               <ArrowIcon />
@@ -51,7 +51,7 @@ export default function Page() {
 
             <Link
               href="https://github.com/mdmjunior"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 bg-white/70 px-5 py-3 text-sm font-bold text-slate-800 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:border-primary-500 hover:text-primary-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:border-primary-400 dark:hover:text-primary-300"
+              className="hover:border-primary-500 hover:text-primary-600 dark:hover:border-primary-400 dark:hover:text-primary-300 inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 bg-white/70 px-5 py-3 text-sm font-bold text-slate-800 shadow-sm backdrop-blur transition hover:-translate-y-0.5 dark:border-white/10 dark:bg-white/5 dark:text-slate-100"
             >
               Explore GitHub
               <ArrowIcon />
@@ -63,12 +63,12 @@ export default function Page() {
           <div className="rounded-[1.5rem] border border-slate-200/80 bg-slate-950 p-6 text-white dark:border-white/10">
             <div className="mb-10 flex items-center justify-between">
               <div>
-                <p className="text-xs font-semibold tracking-[0.25em] text-primary-300 uppercase">
+                <p className="text-primary-300 text-xs font-semibold tracking-[0.25em] uppercase">
                   Current signal
                 </p>
                 <h2 className="mt-2 text-2xl font-black tracking-tight">Operator mindset</h2>
               </div>
-              <div className="h-3 w-3 rounded-full bg-primary-400 shadow-lg shadow-primary-400/60" />
+              <div className="bg-primary-400 shadow-primary-400/60 h-3 w-3 rounded-full shadow-lg" />
             </div>
 
             <div className="space-y-3">
@@ -89,7 +89,7 @@ export default function Page() {
       <section className="py-12">
         <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
-            <p className="text-sm font-bold tracking-[0.25em] text-primary-600 uppercase dark:text-primary-300">
+            <p className="text-primary-600 dark:text-primary-300 text-sm font-bold tracking-[0.25em] uppercase">
               Selected work
             </p>
             <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl dark:text-white">
@@ -105,7 +105,7 @@ export default function Page() {
           {projects.map((project) => (
             <article
               key={project.name}
-              className="group relative overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-white/80 p-6 shadow-sm shadow-slate-950/5 transition duration-300 hover:-translate-y-1 hover:border-primary-500/50 hover:shadow-xl hover:shadow-slate-950/10 dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-primary-400/50 dark:hover:shadow-black/30"
+              className="group hover:border-primary-500/50 dark:hover:border-primary-400/50 relative overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-white/80 p-6 shadow-sm shadow-slate-950/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-950/10 dark:border-white/10 dark:bg-white/[0.04] dark:hover:shadow-black/30"
             >
               <div
                 className={`pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-br opacity-80 ${accentStyles[project.accent]}`}
@@ -119,7 +119,7 @@ export default function Page() {
                   <Link
                     href={project.href}
                     aria-label={`Open ${project.name}`}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/80 text-slate-800 transition group-hover:border-primary-500 group-hover:text-primary-600 dark:border-white/10 dark:bg-white/10 dark:text-white dark:group-hover:border-primary-300 dark:group-hover:text-primary-300"
+                    className="group-hover:border-primary-500 group-hover:text-primary-600 dark:group-hover:border-primary-300 dark:group-hover:text-primary-300 flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/80 text-slate-800 transition dark:border-white/10 dark:bg-white/10 dark:text-white"
                   >
                     <ArrowIcon />
                   </Link>
@@ -153,8 +153,11 @@ export default function Page() {
         <div className="rounded-[2rem] border border-slate-200/80 bg-slate-950 p-6 text-white shadow-2xl shadow-slate-950/20 dark:border-white/10">
           <div className="grid gap-5 md:grid-cols-3">
             {focusAreas.map((area, index) => (
-              <div key={area.title} className="rounded-3xl border border-white/10 bg-white/[0.04] p-5">
-                <span className="text-xs font-black tracking-[0.3em] text-primary-300 uppercase">
+              <div
+                key={area.title}
+                className="rounded-3xl border border-white/10 bg-white/[0.04] p-5"
+              >
+                <span className="text-primary-300 text-xs font-black tracking-[0.3em] uppercase">
                   0{index + 1}
                 </span>
                 <h3 className="mt-4 text-lg font-black">{area.title}</h3>
