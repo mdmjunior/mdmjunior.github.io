@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react'
+
 export type NavIconName =
   | 'home'
   | 'about'
@@ -17,7 +19,7 @@ type NavIconProps = {
   className?: string
 }
 
-const iconPaths: Record<string, JSX.Element> = {
+const iconPaths: Record<string, ReactNode> = {
   home: (
     <>
       <path d="M4 11.5 12 5l8 6.5" />

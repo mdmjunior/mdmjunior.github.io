@@ -19,7 +19,7 @@ export default function ContactForm() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const subject = encodeURIComponent(form.subject || 'Contact from Tech Lab')
+    const subject = encodeURIComponent(form.subject || 'Contact from Marcio's Tech Lab')
     const body = encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
     )
